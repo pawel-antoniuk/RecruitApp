@@ -1,0 +1,34 @@
+@import "../../../theme";
+
+.form-content {
+  display: grid;
+  grid-template-columns: [form-nav] minmax(auto, 20rem) [main-content] auto;
+  padding: 1rem;
+  margin: auto;
+
+  @media only screen and (max-width: $screen-md) {
+    grid-template-columns: [form-nav] auto [main-content] auto;
+  }
+
+  @media only screen and (max-width: $screen-xs) {
+    padding: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+main {
+  @include primary-style(50);
+
+  @media only screen and (max-width: $screen-xs) {
+    padding-top: 2.5rem;
+
+    // horizontal line
+    &::before {
+      content: "";
+      display: block;
+      height: 0.2rem;
+      background: #fff;
+      margin-top: 0.25rem;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import "../../../theme";
+@import "../common";
+
+.input-fields-container {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.date-container {
+  display: flex;
+  justify-content: space-between;
+
+  mat-form-field {
+    width: auto;
+  }
+}
+
+.options {
+  display: grid;
+  gap: 0.5rem;
+
+  mat-radio-group {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 0.5rem;
+  }
+}
+
+.input-fields-container {
+  display: grid;
+  gap: 0.5rem;
+}
+

@@ -1,0 +1,69 @@
+mat-form-field.full-width {
+  width: 100%;
+}
+
+h1 {
+  font-size: 1.2rem;
+}
+
+.two-columns-layout {
+  display: grid;
+  grid-template-columns: [left-column] 1fr [separator] auto [right-column] 1fr;
+  margin: auto;
+
+  @media only screen and (max-width: $screen-sm) {
+    grid-template-columns: 1fr;
+  }
+
+  > * {
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  }
+
+  .vertical-separator {
+    width: 0.2rem;
+    padding: 0;
+    height: 100%;
+    background-color: #eff1f3;
+    grid-area: auto / auto / span 2 / auto;
+
+    &::after {
+      content: "";
+      display: block;
+      margin-top: 1.5rem;
+      background-color: #fff;
+      height: 100%;
+    }
+  }
+
+  .vertical-separator .horizontal-separator {
+    width: 0.2rem;
+    padding: 0;
+    background-color: #eff1f3;
+
+    ::after {
+      margin-top: 2.1rem;
+      background-color: #fff;
+      height: 100%;
+    }
+  }
+
+  section.conditions {
+    grid-row: 1/3;
+    grid-column: 3/4;
+
+    @media only screen and (max-width: $screen-sm) {
+      grid-row: initial;
+      grid-column: initial;
+    }
+  }
+
+  // horizontal separator below sections' title
+  > section > h1::after {
+    content: "";
+    display: block;
+    height: 0.2rem;
+    background: #fff;
+    margin-top: 0.2rem;
+  }
+}
+

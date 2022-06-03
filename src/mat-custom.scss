@@ -1,0 +1,27 @@
+@use "@angular/material" as mat;
+
+mat-form-field.mat-form-field  {
+  .mat-form-field-flex {
+    background-color: #fff;
+  }
+
+  .mat-form-field-underline {
+    &::before {
+      all: initial;
+    }
+    .mat-form-field-ripple {
+      all: initial;
+    }
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+  &.short .mat-form-field-infix {
+    width: auto;
+
+    input {
+      width: 6rem;
+    }
+  }
+}

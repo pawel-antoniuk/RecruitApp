@@ -1,39 +1,60 @@
+@use "@angular/material" as mat;
+@import "theme";
+@import "mat-custom";
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
+// define typography using relative values
+@function define-typography-level(
+  $font-size,
+  $line-height: $font-size,
+  $font-weight: 400,
+  $font-family: null,
+  $letter-spacing: normal) {
+  @return (
+    font-size: $font-size,
+    line-height: $line-height,
+    font-weight: $font-weight,
+    font-family: $font-family,
+    letter-spacing: $letter-spacing
+  );
+}
+$custom-typography: mat.define-typography-config(
+  $font-family: "'Open Sans', sans-serif",
+  $display-4: define-typography-level(8rem, 8rem, 300, $letter-spacing: -0.05em),
+  $display-3: define-typography-level(4rem, 4rem, 400, $letter-spacing: -0.02em),
+  $display-2: define-typography-level(3.21rem, 3.42rem, 400, $letter-spacing: -0.005em),
+  $display-1: define-typography-level(2.42rem, 2.85rem, 400),
+  $headline: define-typography-level(1.71rem, 2.28rem, 400),
+  $title: define-typography-level(1.42rem, 2.28rem, 500),
+  $subheading-2: define-typography-level(1.14rem, 2rem, 400),
+  $subheading-1: define-typography-level(1.07rem, 1.71rem, 400),
+  $body-2: define-typography-level(1rem, 1.71rem, 500),
+  $body-1: define-typography-level(1rem, 1.42rem, 400),
+  $caption: define-typography-level(0.85rem, 1.42rem, 400),
+  $button: define-typography-level(1rem, 1rem, 500),
+  $input: define-typography-level(inherit, 1.125, 400),
+);
+@include mat.core($custom-typography);
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
+$recruit-app-theme: mat.define-light-theme(
+    (
+      color: (
+        primary: $primary-palette,
+        accent: $accent-palette,
+        warn: $warn-palette,
+      ),
+    )
+);
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$RecruitApp-primary: mat.define-palette(mat.$indigo-palette);
-$RecruitApp-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+@include mat.all-component-themes($recruit-app-theme);
 
-// The warn palette is optional (defaults to red).
-$RecruitApp-warn: mat.define-palette(mat.$red-palette);
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$RecruitApp-theme: mat.define-light-theme((
-  color: (
-    primary: $RecruitApp-primary,
-    accent: $RecruitApp-accent,
-    warn: $RecruitApp-warn,
-  )
-));
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($RecruitApp-theme);
-
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
