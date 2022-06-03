@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
-import {MainContentComponent} from './main-content/main-content.component';
+import {MainComponent} from './main/main.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MainRoutingModule} from "./main-routing.module";
 
 @NgModule({
   declarations: [
-    MainContentComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -15,7 +15,7 @@ import {MainRoutingModule} from "./main-routing.module";
     MainRoutingModule
   ],
   providers: [],
-  bootstrap: [MainContentComponent]
+  bootstrap: [MainComponent]
 })
 export class MainModule {
 }
