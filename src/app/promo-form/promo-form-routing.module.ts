@@ -11,6 +11,10 @@ const routes: Routes = [
       {
         path: 'step-definition',
         component: StepDefinitionComponent
+      },
+      {
+        path: '',
+        redirectTo: 'step-definition'
       }
     ]
   }
