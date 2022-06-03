@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {Page404Component} from "./error-page/page404/page404.component";
+import {Page404Component} from "../error-page/page404/page404.component";
 
 const routes: Routes = [
   {
     path: 'promo-form',
-    loadChildren: () => import('./promo-form/promo-form.module').then(m => m.PromoFormModule)
+    loadChildren: () => import('../promo-form/promo-form.module').then(m => m.PromoFormModule)
   },
   {
     path: '',
@@ -22,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class MainRoutingModule { }
