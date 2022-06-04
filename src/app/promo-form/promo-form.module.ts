@@ -15,6 +15,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {ReactiveFormsModule} from "@angular/forms";
 import {InfoButtonComponent} from './components/info-button/info-button.component';
 import {MatIconModule} from "@angular/material/icon";
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {MatIconModule} from "@angular/material/icon";
     MatCheckboxModule,
     MatTooltipModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatButtonModule
   ],
   exports: [
     PromoFormComponent

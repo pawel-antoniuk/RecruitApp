@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DraftService} from "../../services/draft.service";
+
 
 @Component({
   selector: 'app-step-summary',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StepSummaryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private draftService: DraftService) {
+  }
 
   ngOnInit(): void {
   }
 
+  get summary(): any {
+    return this.draftService.loadAll()
+  }
+
+  onSaveClicked() {
+    this.draftService.clearAll();
+  }
 }

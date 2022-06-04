@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {DraftService} from "../../services/draft.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-step-definition',
@@ -7,6 +9,8 @@ import {FormBuilder} from "@angular/forms";
   styleUrls: ['./step-definition.component.scss']
 })
 export class StepDefinitionComponent implements OnInit {
+
+  private formValueChangesSubscription?: Subscription;
 
   form = this.fb.group({
     description: this.fb.group({
@@ -26,9 +30,17 @@ export class StepDefinitionComponent implements OnInit {
     })
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private draftService: DraftService) {  }
 
   ngOnInit(): void {
+    this.form.patchValue(this.draftService.load('definition'));
+    this.formValueChangesSubscription = this.form.valueChanges.subscribe(
+      x => this.draftService.save('definition', x));
+  }
+
+  ngOnDestroy(): void {
+    this.formValueChangesSubscription?.unsubscribe();
   }
 
 }

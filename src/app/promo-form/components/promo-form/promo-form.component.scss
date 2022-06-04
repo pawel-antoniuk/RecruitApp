@@ -8,7 +8,7 @@
   max-width: $screen-lg;
 
   @media only screen and (max-width: $screen-md) {
-    grid-template-columns: [form-nav] auto [main-content] auto;
+    grid-template-columns: [form-nav] auto [main-content] 1fr;
   }
 
   @media only screen and (max-width: $screen-xs) {
