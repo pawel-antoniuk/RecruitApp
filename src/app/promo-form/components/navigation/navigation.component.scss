@@ -1,24 +1,23 @@
+@import "../../form-common-style";
 @import "../../../../theme";
+
+$font-size: 1.5rem;
+$number-size: calc(#{$font-size} + 20px);
 
 .navigation {
   position: relative;
 }
 
 .step {
-  @include primary-style(50);
-
-  display: block;
+  display: grid;
   margin-bottom: 0.2rem;
-  margin-left: 1rem;
+  //margin-left: 1rem;
   user-select: none;
   white-space: nowrap;
-  text-decoration: none;
   cursor: default;
-  pointer-events: none;
-
-  @media only screen and (max-width: $screen-xs) {
-    padding-right: 0.5rem;
-  }
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  justify-content: stretch;
 
   &.unavailable {
     .number {
@@ -35,13 +34,12 @@
   }
 
   &.active {
-    font-weight: 600;
-
-    @media only screen and (max-width: $screen-xs) {
-      .label {
+    .label {
+      font-weight: 600;
+      @media only screen and (max-width: $screen-xs) {
         position: absolute;
         top: 0;
-        margin: 1rem 0 0 2.2rem;
+        margin: 0.8rem 0 0 4.8rem;
       }
     }
 
@@ -51,7 +49,7 @@
   }
 
   &:not(.active) {
-    margin-right: 0.2em;
+    margin-right: 0.2rem;
 
     @media only screen and (max-width: $screen-xs) {
       .label {
@@ -63,33 +61,36 @@
   &:not(.active,.unavailable) {
     cursor: pointer;
     pointer-events: initial;
-  }
 
-  &:hover:not(.unavailable,.active) {
-    @include accent-style(500);
+    &:hover{
+      color: primary-contrast-color(100);
+      transition: color 0.2s;
 
-    .number {
-      border: 0.2rem solid #991300;
-      @include primary-style(50);
+      .number {
+        border: 0.2rem solid accent-color(500);
+        @include accent-style(500);
+      }
+
+      .animation-fill {
+        width: 100%;
+        transition: width 0.2s;
+        transition-timing-function: ease-out;
+      }
     }
   }
 
   .number {
     @include primary-style(500);
-
-    $font-size: 1.5rem;
-    $number-size: calc(#{$font-size} + 20px);
-
     display: inline-flex;
     border-radius: 50%;
     width: $number-size;
     height: $number-size;
-    margin-left: calc(#{$number-size} / -2);
     font-size: $font-size;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
     box-sizing: border-box;
+    grid-area: 1 / 1 / 2 / 2;
   }
 
   .label {
@@ -97,6 +98,30 @@
     vertical-align: middle;
     font-size: 1rem;
     padding-right: 1rem;
+    grid-area: 1 / 2 / 2 / 3;
+    justify-self: start;
+  }
+
+  .background-container {
+    grid-area: 1 / 1 / 2 / 3;
+    width: auto;
+    height: 100%;
+    padding-left: calc(#{$number-size} / 2);
+    display: grid;
+  }
+
+  .animation-fill {
+    background-color: primary-color(100);
+    width: 0;
+    height: 100%;
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  .background {
+    background-color: primary-color(50);
+    width: 100%;
+    height: 100%;
+    grid-area: 1 / 1 / 2 / 2;
   }
 }
 

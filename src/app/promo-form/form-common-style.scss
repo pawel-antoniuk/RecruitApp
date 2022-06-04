@@ -1,11 +1,16 @@
 @import "../../theme.scss";
 
-mat-form-field.full-width {
-  width: 100%;
-}
-
 h1 {
   font-size: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+mat-form-field.full-width {
+  width: 100%;
 }
 
 .two-columns-layout {
@@ -27,6 +32,10 @@ h1 {
     height: 100%;
     background-color: #eff1f3;
     grid-area: auto / auto / span 2 / auto;
+
+    @media only screen and (max-width: $screen-sm) {
+      display: none;
+    }
 
     &::after {
       content: "";

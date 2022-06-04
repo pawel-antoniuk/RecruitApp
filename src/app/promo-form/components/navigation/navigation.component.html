@@ -1,12 +1,17 @@
 <section class="navigation">
-  <a routerLink="{{ step.url }}" *ngFor="let step of steps; let i = index" class="step"
-     [class.active]="step.active"
-     [class.unavailable]="!step.available"
-     matTooltip="{{ step.label | titlecase }}"
-     matTooltipPosition="right"
-     matTooltipClass="tooltip">
-
-    <span class="number">{{ i + 1 }}</span>
-    <span class="label">{{ step.label | uppercase }}</span>
+  <a routerLink="{{ step.url }}" *ngFor="let step of steps; let i = index">
+    <div class="step"
+         [class.active]="step.active"
+         [class.unavailable]="!step.available"
+         matTooltip="{{ step.label | titlecase }}"
+         matTooltipPosition="right"
+         matTooltipClass="tooltip">
+      <div class="background-container">
+        <div class="background"></div>
+        <div class="animation-fill"></div>
+      </div>
+      <div class="number">{{ i + 1 }}</div>
+      <div class="label">{{ step.label | uppercase }}</div>
+    </div>
   </a>
 </section>
