@@ -3,7 +3,8 @@
      [class.active]="step.active"
      [class.unavailable]="!step.available"
      matTooltip="{{ step.label | titlecase }}"
-     matTooltipPosition="right">
+     matTooltipPosition="right"
+     matTooltipClass="tooltip">
 
     <span class="number">{{ i + 1 }}</span>
     <span class="label">{{ step.label | uppercase }}</span>

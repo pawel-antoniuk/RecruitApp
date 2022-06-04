@@ -6,7 +6,7 @@ import {StepSummaryComponent} from './components/step-summary/step-summary.compo
 import {PromoFormComponent} from './components/promo-form/promo-form.component';
 import {RouterModule, Routes} from "@angular/router";
 import {PromoFormRoutingModule} from "./promo-form-routing.module";
-import { NavigationComponent } from './components/navigation/navigation.component';
+import {NavigationComponent} from './components/navigation/navigation.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatInputModule} from "@angular/material/input";
