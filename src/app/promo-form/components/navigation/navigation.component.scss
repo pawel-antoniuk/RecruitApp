@@ -5,12 +5,12 @@ $number-size: calc(#{$font-size} + 20px);
 
 .navigation {
   position: relative;
+  display: grid;
+  gap: 0.2rem;
 }
 
 .step {
   display: grid;
-  margin-bottom: 0.2rem;
-  //margin-left: 1rem;
   user-select: none;
   white-space: nowrap;
   cursor: default;
@@ -38,7 +38,7 @@ $number-size: calc(#{$font-size} + 20px);
       @media only screen and (max-width: $screen-xs) {
         position: absolute;
         top: 0;
-        margin: 0.8rem 0 0 4.4rem;
+        margin: 0.8rem 0 0 1.7rem;
       }
     }
 
@@ -66,14 +66,20 @@ $number-size: calc(#{$font-size} + 20px);
       transition: color 0.2s;
 
       .number {
-        border: 0.2rem solid accent-color(500);
-        @include accent-style(500);
+        @include primary-style(700);
       }
 
       .animation-fill {
         width: 100%;
         transition: width 0.2s;
         transition-timing-function: ease-out;
+      }
+    }
+
+    &:active {
+      .animation-fill {
+        background-color: primary-color(200);
+        transition: 0.3s;
       }
     }
   }
