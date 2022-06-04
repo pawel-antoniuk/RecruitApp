@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PromoAPIService} from "../../shared-services/promo-api.service";
 
 @Component({
   selector: 'app-promo-list',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PromoListComponent implements OnInit {
 
-  constructor() { }
+  promoList: any[] = [];
+
+  constructor(private promoAPI: PromoAPIService) { }
 
   ngOnInit(): void {
+    this.promoAPI.getAllPromoForms().subscribe(result => {
+      if(result.status === 'ok') {
+        this.promoList = result.payload!;
+      } else {
+        console.error(result.message)
+      }
+    });
   }
 
 }

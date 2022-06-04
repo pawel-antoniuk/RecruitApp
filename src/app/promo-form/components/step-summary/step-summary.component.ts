@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {DraftService} from "../../services/draft.service";
+import {DraftService} from "../../../shared-services/draft.service";
 import {PromoAPIService} from "../../../shared-services/promo-api.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -11,7 +12,8 @@ import {PromoAPIService} from "../../../shared-services/promo-api.service";
 export class StepSummaryComponent implements OnInit {
 
   constructor(private draftService: DraftService,
-              private promoAPI: PromoAPIService) {
+              private promoAPI: PromoAPIService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -23,8 +25,13 @@ export class StepSummaryComponent implements OnInit {
   }
 
   onSaveClicked() {
-    this.promoAPI.postPromoForm().subscribe(() => {
-      this.draftService.clearAll();
+    const draft = this.draftService.loadAll();
+    this.promoAPI.postPromoForm(draft).subscribe(() => {
+      this.router.navigate(['promo-list']).then(nav => {
+        this.draftService.clearAll();
+      }, err => {
+        console.error(err);
+      });
     })
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {DraftService} from "../../services/draft.service";
+import {DraftService} from "../../../shared-services/draft.service";
 import {Subscription} from "rxjs";
 
 @Component({
