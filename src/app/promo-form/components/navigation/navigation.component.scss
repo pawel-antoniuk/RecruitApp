@@ -1,0 +1,101 @@
+@import "../../../../theme";
+
+.navigation {
+  position: relative;
+}
+
+.step {
+  @include primary-style(50);
+
+  display: block;
+  margin-bottom: 0.2rem;
+  margin-left: 1rem;
+  user-select: none;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: default;
+  pointer-events: none;
+
+  @media only screen and (max-width: $screen-xs) {
+    padding-right: 0.5rem;
+  }
+
+  &.unavailable {
+    .number {
+      @include primary-style(100);
+    }
+
+    .label {
+      color: #b9bbbd;
+    }
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  &.active {
+    font-weight: 600;
+
+    @media only screen and (max-width: $screen-xs) {
+      .label {
+        position: absolute;
+        top: 0;
+        margin: 1rem 0 0 2.2rem;
+      }
+    }
+
+    .number {
+      @include accent-style;
+    }
+  }
+
+  &:not(.active) {
+    margin-right: 0.2em;
+
+    @media only screen and (max-width: $screen-xs) {
+      .label {
+        display: none;
+      }
+    }
+  }
+
+  &:not(.active,.unavailable) {
+    cursor: pointer;
+    pointer-events: initial;
+  }
+
+  &:hover:not(.unavailable,.active) {
+    @include accent-style(500);
+
+    .number {
+      border: 0.2rem solid #991300;
+      @include primary-style(50);
+    }
+  }
+
+  .number {
+    @include primary-style(500);
+
+    $font-size: 1.5rem;
+    $number-size: calc(#{$font-size} + 20px);
+
+    display: inline-flex;
+    border-radius: 50%;
+    width: $number-size;
+    height: $number-size;
+    margin-left: calc(#{$number-size} / -2);
+    font-size: $font-size;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+  }
+
+  .label {
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    font-size: 1rem;
+    padding-right: 1rem;
+  }
+}

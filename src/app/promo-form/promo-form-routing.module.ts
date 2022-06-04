@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {StepDefinitionComponent} from "./step-definition/step-definition.component";
-import {PromoFormComponent} from "./promo-form/promo-form.component";
-import {StepPlaceholderComponent} from "./step-placeholder/step-placeholder.component";
-import {StepSummaryComponent} from "./step-summary/step-summary.component";
+import {StepDefinitionComponent} from "./components/step-definition/step-definition.component";
+import {PromoFormComponent} from "./components/promo-form/promo-form.component";
+import {StepPlaceholderComponent} from "./components/step-placeholder/step-placeholder.component";
+import {StepSummaryComponent} from "./components/step-summary/step-summary.component";
 
 const routes: Routes = [
   {
@@ -19,7 +19,31 @@ const routes: Routes = [
         component: StepSummaryComponent
       },
       {
-        path: 'step-placeholder',
+        path: 'step-placeholder1',
+        component: StepPlaceholderComponent
+      },
+      {
+        path: 'step-placeholder2',
+        component: StepPlaceholderComponent
+      },
+      {
+        path: 'step-placeholder3',
+        component: StepPlaceholderComponent
+      },
+      {
+        path: 'step-placeholder4',
+        component: StepPlaceholderComponent
+      },
+      {
+        path: 'step-placeholder5',
+        component: StepPlaceholderComponent
+      },
+      {
+        path: 'step-placeholder6',
+        component: StepPlaceholderComponent
+      },
+      {
+        path: 'step-placeholder7',
         component: StepPlaceholderComponent
       },
       {

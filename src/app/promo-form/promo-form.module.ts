@@ -1,17 +1,18 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {StepDefinitionComponent} from './step-definition/step-definition.component';
-import {StepPlaceholderComponent} from './step-placeholder/step-placeholder.component';
-import {StepSummaryComponent} from './step-summary/step-summary.component';
-import {PromoFormComponent} from './promo-form/promo-form.component';
+import {StepDefinitionComponent} from './components/step-definition/step-definition.component';
+import {StepPlaceholderComponent} from './components/step-placeholder/step-placeholder.component';
+import {StepSummaryComponent} from './components/step-summary/step-summary.component';
+import {PromoFormComponent} from './components/promo-form/promo-form.component';
 import {RouterModule, Routes} from "@angular/router";
 import {PromoFormRoutingModule} from "./promo-form-routing.module";
-import { NavigationComponent } from './navigation/navigation.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatInputModule} from "@angular/material/input";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     MatNativeDateModule,
     MatRadioModule,
     MatCheckboxModule,
+    MatTooltipModule
   ],
   exports: [
     PromoFormComponent
