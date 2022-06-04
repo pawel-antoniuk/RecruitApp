@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DraftService} from "../../../shared-services/draft.service";
 import {Subscription} from "rxjs";
 
@@ -15,15 +15,15 @@ export class StepDefinitionComponent implements OnInit {
   form = this.fb.group({
     id: [''],
     description: this.fb.group({
-      marketingName: [''],
+      marketingName: ['', Validators.required],
       technicalName: [''],
       description: [''],
     }),
     conditions: this.fb.group({
-      portal: [''],
-      type: [''],
+      portal: ['', Validators.required],
+      type: ['', Validators.required],
       benefitAmount: [''],
-      startDate: [''],
+      startDate: ['', Validators.required],
       endDate: [''],
       priceConditions: ['businessConditions'],
       connectWithOtherPromotions: [false],

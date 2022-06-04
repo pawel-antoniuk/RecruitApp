@@ -80,12 +80,31 @@ app-info-button {
   }
 
   // horizontal separator below section title
-  > section > h1::after {
-    content: "";
-    display: block;
-    height: 0.2rem;
-    background: #fff;
-    margin-top: 0.2rem;
+  .title {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+
+    h1 {
+      grid-area: 1 / 1 / 2 / 3;
+      box-sizing: border-box;
+
+      &::after {
+        content: "";
+        display: block;
+        height: 0.2rem;
+        background: #fff;
+        margin-top: 0.2rem;
+      }
+    }
+
+    .requireInfo {
+      color: accent-color(500);
+      grid-area: 1 / 2 / 2 / 3;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+    }
   }
 }
+
 
