@@ -10,28 +10,46 @@ import {Router} from "@angular/router";
   styleUrls: ['./step-summary.component.scss']
 })
 export class StepSummaryComponent implements OnInit {
+  draft: any = {};
 
   constructor(private draftService: DraftService,
               private promoAPI: PromoAPIService,
               private router: Router) {
+    this.draft = this.draftService.load('promo-form');
   }
 
   ngOnInit(): void {
   }
 
   get summary(): any {
-    const draft = this.draftService.loadAll();
-    return JSON.stringify(draft, null, 4);
+    return JSON.stringify(this.draft, null, 4);
   }
 
-  onSaveClicked() {
-    const draft = this.draftService.loadAll();
-    this.promoAPI.postPromoForm(draft).subscribe(() => {
-      this.router.navigate(['promo-list']).then(nav => {
-        this.draftService.clearAll();
-      }, err => {
-        console.error(err);
-      });
-    })
+  onSubmitClicked() {
+    if (this.draft.id) {
+      this.promoAPI.putPromo(this.draft.id, this.draft).subscribe(() => {
+        this.router.navigate(['promo-list']).then(nav => {
+          this.draftService.clearAll('promo-form');
+        }, err => {
+          console.error(err);
+        });
+      })
+    } else {
+      this.promoAPI.postPromo(this.draft).subscribe(() => {
+        this.router.navigate(['promo-list']).then(nav => {
+          this.draftService.clearAll('promo-form');
+        }, err => {
+          console.error(err);
+        });
+      })
+    }
+  }
+
+  onClearClicked() {
+    this.draftService.clearAll('promo-form');
+    this.router.navigate(['promo-form']).then(nav => {
+    }, err => {
+      console.error(err);
+    });
   }
 }

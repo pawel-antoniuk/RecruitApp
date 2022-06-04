@@ -14,24 +14,28 @@ export class DraftService {
   constructor() {
   }
 
-  public loadAll(): StoredValue {
-    const storageItem = localStorage.getItem(localStorageKey) ?? '{}';
+  private static getLocalStorageKey(key: string) {
+    return `${localStorageKey}/${key}`
+  }
+
+  public load(key: string): StoredValue {
+    const storageItem = localStorage.getItem(DraftService.getLocalStorageKey(key)) ?? '{}';
     this.cachedState = JSON.parse(storageItem);
     return this.cachedState;
   }
 
-  public load(key: string): StoredValue {
-    const storedValues = this.loadAll();
-    return storedValues[key] ?? {};
+  public save(key: string, draft: StoredValue) {
+    const strDraft = JSON.stringify(draft);
+    localStorage.setItem(DraftService.getLocalStorageKey(key), strDraft);
   }
 
-  public save(key: string, state: StoredValue) {
-    this.cachedState[key] = state;
-    const strState = JSON.stringify(this.cachedState);
-    localStorage.setItem(localStorageKey, strState);
+  public clearAll(key: string) {
+    localStorage.removeItem(DraftService.getLocalStorageKey(key));
   }
 
-  public clearAll() {
-    localStorage.removeItem(localStorageKey);
+  public setDraft(key: string, newDraft: any) {
+    this.cachedState = newDraft;
+    const newDraftStr = JSON.stringify(newDraft);
+    localStorage.setItem(DraftService.getLocalStorageKey(key), newDraftStr);
   }
 }

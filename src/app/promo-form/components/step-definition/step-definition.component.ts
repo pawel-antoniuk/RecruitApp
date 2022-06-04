@@ -13,6 +13,7 @@ export class StepDefinitionComponent implements OnInit {
   private formValueChangesSubscription?: Subscription;
 
   form = this.fb.group({
+    id: [''],
     description: this.fb.group({
       marketingName: [''],
       technicalName: [''],
@@ -34,9 +35,9 @@ export class StepDefinitionComponent implements OnInit {
               private draftService: DraftService) {  }
 
   ngOnInit(): void {
-    this.form.patchValue(this.draftService.load('definition'));
+    this.form.patchValue(this.draftService.load('promo-form'));
     this.formValueChangesSubscription = this.form.valueChanges.subscribe(
-      x => this.draftService.save('definition', x));
+      x => this.draftService.save('promo-form', x));
   }
 
   ngOnDestroy(): void {
