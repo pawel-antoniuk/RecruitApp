@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {StepService} from "../../services/step.service";
 
 @Component({
   selector: 'app-promo-form',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./promo-form.component.scss']
 })
 export class PromoFormComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(public stepService: StepService) { }
 
   ngOnInit(): void {
   }

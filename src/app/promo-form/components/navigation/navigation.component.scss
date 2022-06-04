@@ -4,7 +4,8 @@ $font-size: 1.5rem;
 $number-size: calc(#{$font-size} + 20px);
 
 .navigation {
-  position: relative;
+  position: sticky;
+  top: 0;
   display: grid;
   gap: 0.2rem;
 }
@@ -35,11 +36,6 @@ $number-size: calc(#{$font-size} + 20px);
   &.active {
     .label {
       font-weight: 600;
-      @media only screen and (max-width: $screen-xs) {
-        position: absolute;
-        top: 0;
-        margin: 0.8rem 0 0 1.7rem;
-      }
     }
 
     .number {
@@ -49,18 +45,12 @@ $number-size: calc(#{$font-size} + 20px);
 
   &:not(.active) {
     margin-right: 0.2rem;
-
-    @media only screen and (max-width: $screen-xs) {
-      .label {
-        display: none;
-      }
-    }
   }
 
   &:not(.active,.unavailable) {
     cursor: pointer;
 
-    &:hover{
+    &:hover {
       color: primary-contrast-color(100);
       transition: color 0.2s;
 
@@ -76,6 +66,11 @@ $number-size: calc(#{$font-size} + 20px);
     }
 
     &:active {
+      .number {
+        @include accent-style(500);
+        transition: 0.3s;
+      }
+
       .animation-fill {
         background-color: primary-color(200);
         transition: 0.3s;
@@ -126,11 +121,21 @@ $number-size: calc(#{$font-size} + 20px);
     padding-right: 1rem;
     grid-area: 1 / 2 / 2 / 3;
     justify-self: start;
+
+    @media only screen and (max-width: $screen-xs) {
+      display: none;
+    }
   }
 
   .info-button {
     grid-area: 1 / 3 / 2 / 4;
     margin-right: 0.2rem;
+
+    @media only screen and (max-width: $screen-xs) {
+      position: absolute;
+      //margin: auto;
+      //margin-left: 1rem;
+    }
   }
 }
 

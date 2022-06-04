@@ -26,11 +26,20 @@ export class StepService {
     })
   }
 
+  public get currentStepId(): string {
+    return this.router.url.split('/').pop() ?? '';
+  }
+
+  public get currentSteLabel(): string {
+    const stepId = this.currentStepId;
+    return this._steps.find(s => s.id === stepId)?.label ?? '';
+  }
+
   public refresh() {
-    const currentDocumentName = this.router.url.split('/').pop();
+    const currentDocumentName = this.currentStepId;
 
     for(let step of this._steps) {
-      step.active = step.url === currentDocumentName
+      step.active = step.id === currentDocumentName
     }
   }
 

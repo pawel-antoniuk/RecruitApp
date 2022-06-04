@@ -1,5 +1,5 @@
 export class Step {
-  constructor(public url: string,
+  constructor(public id: string,
               public label: string,
               public tooltip: string = '',
               public available: boolean = true,

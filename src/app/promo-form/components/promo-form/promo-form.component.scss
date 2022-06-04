@@ -19,16 +19,27 @@
 main {
   @include primary-style(50);
 
-  @media only screen and (max-width: $screen-xs) {
-    padding-top: 2.5rem;
+  .step-title {
+    display: none;
+  }
 
-    // horizontal line
-    &::before {
-      content: "";
+  @media only screen and (max-width: $screen-xs) {
+    .step-title {
       display: block;
-      height: 0.2rem;
-      background: #fff;
-      margin-top: 0.25rem;
+
+      > h1 {
+        font-size: 1.5rem;
+        margin: 0 0 0 1.8rem;
+        height: calc(1.5rem + 20px);
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        height: 0.2rem;
+        background: #fff;
+      }
     }
   }
+
 }

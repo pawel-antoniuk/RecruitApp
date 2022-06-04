@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {TooltipPosition} from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-info-button',
@@ -8,8 +9,10 @@ import {Component, Input, OnInit} from '@angular/core';
 export class InfoButtonComponent implements OnInit {
 
   @Input() tooltip = '';
+  @Input() tooltipPosition: TooltipPosition = 'below';
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
