@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StepService} from "../../services/step.service";
-import {Step} from "../../models/Step";
+import {Step} from "../../viewmodels/Step";
 
 @Component({
   selector: 'app-navigation',

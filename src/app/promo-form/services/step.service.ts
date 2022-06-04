@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Step} from "../models/Step";
+import {Step} from "../viewmodels/Step";
 import {ActivationEnd, Router} from "@angular/router";
 
 @Injectable({
@@ -11,8 +11,8 @@ export class StepService {
     new Step('step-placeholder1', 'choose products'),
     new Step('step-placeholder2', 'exclude products'),
     new Step('step-placeholder3', 'bonus products'),
-    new Step('step-placeholder4', 'products limits'),
-    new Step('step-placeholder5', 'choose clients'),
+    new Step('step-placeholder4', 'products limits', 'Lorem ipsum'),
+    new Step('step-placeholder5', 'choose clients', 'Lorem ipsum'),
     new Step('step-placeholder6', 'exclude clients'),
     new Step('step-placeholder7', 'client limits'),
     new Step('step-summary', 'summary'),

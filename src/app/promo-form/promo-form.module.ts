@@ -4,7 +4,6 @@ import {StepDefinitionComponent} from './components/step-definition/step-definit
 import {StepPlaceholderComponent} from './components/step-placeholder/step-placeholder.component';
 import {StepSummaryComponent} from './components/step-summary/step-summary.component';
 import {PromoFormComponent} from './components/promo-form/promo-form.component';
-import {RouterModule, Routes} from "@angular/router";
 import {PromoFormRoutingModule} from "./promo-form-routing.module";
 import {NavigationComponent} from './components/navigation/navigation.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
@@ -13,6 +12,9 @@ import {MatInputModule} from "@angular/material/input";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {ReactiveFormsModule} from "@angular/forms";
+import {InfoButtonComponent} from './components/info-button/info-button.component';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     StepPlaceholderComponent,
     StepSummaryComponent,
     PromoFormComponent,
-    NavigationComponent
+    NavigationComponent,
+    InfoButtonComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +33,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatNativeDateModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ReactiveFormsModule,
+    MatIconModule
   ],
   exports: [
     PromoFormComponent

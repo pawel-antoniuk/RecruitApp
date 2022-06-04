@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-step-definition',
@@ -7,7 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StepDefinitionComponent implements OnInit {
 
-  constructor() { }
+  form = this.fb.group({
+    description: this.fb.group({
+      marketingName: [''],
+      technicalName: [''],
+      description: [''],
+    }),
+    conditions: this.fb.group({
+      portal: [''],
+      type: [''],
+      benefitAmount: [''],
+      startDate: [''],
+      endDate: [''],
+      priceConditions: ['businessConditions'],
+      connectWithOtherPromotions: [false],
+      backPromotion: [false]
+    })
+  })
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }

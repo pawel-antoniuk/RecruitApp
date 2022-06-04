@@ -1,5 +1,15 @@
 @import "../../form-common-style";
 
+app-info-button {
+  position: absolute;
+  top: 0.5rem;
+  right: -1.6rem;
+}
+
+.input-line {
+  position: relative;
+}
+
 .input-fields-container {
   display: grid;
   gap: 0.5rem;
@@ -41,7 +51,7 @@
   }
 
   > section {
-    padding: 0.3rem 1.5rem 0.5rem 1.5rem;
+    padding: 0.3rem 1.8rem 0.5rem 1.8rem;
   }
 
   .vertical-separator {
