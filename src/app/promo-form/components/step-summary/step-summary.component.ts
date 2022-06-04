@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DraftService} from "../../services/draft.service";
+import {PromoAPIService} from "../../../shared-services/promo-api.service";
 
 
 @Component({
@@ -9,17 +10,21 @@ import {DraftService} from "../../services/draft.service";
 })
 export class StepSummaryComponent implements OnInit {
 
-  constructor(private draftService: DraftService) {
+  constructor(private draftService: DraftService,
+              private promoAPI: PromoAPIService) {
   }
 
   ngOnInit(): void {
   }
 
   get summary(): any {
-    return this.draftService.loadAll()
+    const draft = this.draftService.loadAll();
+    return JSON.stringify(draft, null, 4);
   }
 
   onSaveClicked() {
-    this.draftService.clearAll();
+    this.promoAPI.postPromoForm().subscribe(() => {
+      this.draftService.clearAll();
+    })
   }
 }

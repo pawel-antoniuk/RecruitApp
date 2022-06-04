@@ -1,7 +1,7 @@
 <section>
   <h1>Summary</h1>
 
-  {{ summary | json}}
+  <div [innerHTML]="summary" class="summary-content"></div>
 
   <button mat-raised-button color="accent" class="save-button" (click)="onSaveClicked()">
     Save

@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: () => import('../promo-form/promo-form.module').then(m => m.PromoFormModule)
   },
   {
+    path: 'promo-list',
+    loadChildren: () => import('../promo-list/promo-list.module').then(m => m.PromoListModule)
+  },
+  {
     path: '',
     redirectTo: 'promo-form',
     pathMatch: 'full'
