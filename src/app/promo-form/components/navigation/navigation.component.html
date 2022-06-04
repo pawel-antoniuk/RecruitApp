@@ -1,5 +1,6 @@
 <section class="navigation">
-  <a routerLink="{{ step.url }}" *ngFor="let step of steps; let i = index">
+  <a [routerLink]="step.available ? step.url : null"
+     *ngFor="let step of steps; let i = index">
     <div class="step"
          [class.active]="step.active"
          [class.unavailable]="!step.available"
@@ -12,6 +13,9 @@
       </div>
       <div class="number">{{ i + 1 }}</div>
       <div class="label">{{ step.label | uppercase }}</div>
+      <div class="info-button" *ngIf="step.tooltip">
+        <app-info-button tooltip="{{ step.tooltip }}"></app-info-button>
+      </div>
     </div>
   </a>
 </section>
