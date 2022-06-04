@@ -1,4 +1,3 @@
-@import "../../../../theme";
 @import "../../form-common-style";
 
 .input-fields-container {
@@ -29,5 +28,54 @@
 .input-fields-container {
   display: grid;
   gap: 0.5rem;
+}
+
+
+.two-columns-layout {
+  display: grid;
+  grid-template-columns: [left-column] 1fr [separator] auto [right-column] 1fr;
+  margin: auto;
+
+  @media only screen and (max-width: $screen-sm) {
+    grid-template-columns: 1fr;
+  }
+
+  > section {
+    padding: 0.3rem 1.5rem 0.5rem 1.5rem;
+  }
+
+  .vertical-separator {
+    width: 0.2rem;
+    padding: 0;
+    height: 100%;
+    background-color: primary-color(50);
+    grid-area: auto / auto / span 2 / auto;
+
+    @media only screen and (max-width: $screen-sm) {
+      display: none;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      margin-top: 1.5rem;
+      background-color: #fff;
+      height: 100%;
+    }
+  }
+
+  .conditions {
+    grid-row: auto/ span 2;
+    grid-column: auto;
+  }
+
+  // horizontal separator below section title
+  > section > h1::after {
+    content: "";
+    display: block;
+    height: 0.2rem;
+    background: #fff;
+    margin-top: 0.2rem;
+  }
 }
 

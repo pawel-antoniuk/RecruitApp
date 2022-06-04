@@ -1,5 +1,4 @@
 @import "../../form-common-style";
-@import "../../../../theme";
 
 $font-size: 1.5rem;
 $number-size: calc(#{$font-size} + 20px);
@@ -39,7 +38,7 @@ $number-size: calc(#{$font-size} + 20px);
       @media only screen and (max-width: $screen-xs) {
         position: absolute;
         top: 0;
-        margin: 0.8rem 0 0 4.8rem;
+        margin: 0.8rem 0 0 4.4rem;
       }
     }
 
