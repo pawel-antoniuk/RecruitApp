@@ -1,0 +1,169 @@
+<form [formGroup]="form">
+  <div class="container" formGroupName="definition">
+    <!-- Description column-->
+    <div class="content">
+      <section>
+        <div class="title">
+          <h1>Description</h1>
+          <div class="require-info"> ∗ is required</div>
+        </div>
+
+        <section formGroupName="description" class="input-fields-container">
+          <div class="input-line">
+            <app-info-button tooltip="Lorem ipsum"></app-info-button>
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Marketing name</mat-label>
+              <input formControlName="marketingName" matInput type="text"/>
+            </mat-form-field>
+          </div>
+
+          <div class="input-line">
+            <app-info-button tooltip="Lorem ipsum"></app-info-button>
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Technical name</mat-label>
+              <input formControlName="technicalName" matInput type="text"/>
+            </mat-form-field>
+          </div>
+
+          <div class="input-line">
+            <app-info-button tooltip="Lorem ipsum"></app-info-button>
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Description</mat-label>
+              <textarea formControlName="description" matInput rows="10"></textarea>
+            </mat-form-field>
+          </div>
+        </section>
+      </section>
+    </div>
+
+    <!-- Conditions columns -->
+    <div class="content">
+      <section formGroupName="conditions" class="conditions">
+        <div class="title">
+          <h1>Conditions</h1>
+          <div class="require-info"> ∗ is required</div>
+        </div>
+        <section class="input-fields-container">
+          <div class="input-line">
+            <app-info-button tooltip="Lorem ipsum"></app-info-button>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Portal</mat-label>
+              <mat-select formControlName="portal">
+                <mat-option *ngFor="let keyValue of availablePortalValues" [value]="keyValue[0]">
+                  {{ keyValue[1] }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="input-line">
+            <app-info-button tooltip="Lorem ipsum"></app-info-button>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Type</mat-label>
+              <mat-select formControlName="type">
+                <mat-option *ngFor="let keyValue of availableTypeValues" [value]="keyValue[1]">
+                  {{ keyValue[1] }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="input-line">
+            <app-info-button tooltip="Lorem ipsum"></app-info-button>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Benefit amount</mat-label>
+              <input formControlName="benefitAmount" matInput type="text"/>
+            </mat-form-field>
+          </div>
+        </section>
+
+        <section class="date-container input-line">
+          <app-info-button tooltip="Lorem ipsum"></app-info-button>
+          <mat-form-field class="short" appearance="fill">
+            <mat-label>Start date</mat-label>
+            <input formControlName="startDate" matInput [matDatepicker]="startPicker"/>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="startPicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="short" appearance="fill">
+            <mat-label>End date</mat-label>
+            <input formControlName="endDate" matInput [matDatepicker]="endPicker"/>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="endPicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+          </mat-form-field>
+        </section>
+
+        <section class="options input-line">
+          <div class="input-line">
+            <app-info-button tooltip="Lorem ipsum"></app-info-button>
+            <mat-radio-group formControlName="priceConditions">
+              <mat-radio-button value="businessConditions">Business conditions</mat-radio-button>
+              <mat-radio-button value="basePrice100%">Base price 100%</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="input-line">
+            <app-info-button tooltip="Lorem ipsum"></app-info-button>
+            <mat-checkbox formControlName="connectWithOtherPromotions">
+              Connect with other promotions
+            </mat-checkbox>
+          </div>
+          <div class="input-line">
+            <app-info-button tooltip="Lorem ipsum"></app-info-button>
+            <mat-checkbox formControlName="backPromotion">
+              Back promotion
+            </mat-checkbox>
+          </div>
+        </section>
+      </section>
+    </div>
+
+    <!-- 'Catalog promotion tutorial' column-->
+    <div class="content">
+      <section>
+        <div class="title">
+          <h1>Catalog Promotion tutorial:</h1>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+          tristique erat vitae enim efficitur, in pharetra metus facilisis. Sed
+          consectetur molestie nunc a sagittis. Sed sapien nisi, vestibulum in
+          volutpat vel, interdum vel turpis. Praesent volutpat venenatis augue sed
+          molestie. Proin vulputate congue leo quis dictum. Integer lacus diam,
+          bibendum vitae auctor ut, facilisis quis sem. Suspendisse accumsan augue
+          dapibus nisl dictum vehicula id et justo. Aenean scelerisque felis nec
+          fringilla lobortis. Vivamus diam arcu, faucibus a dignissim eu,
+          pellentesque sed tellus.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+          tristique erat vitae enim efficitur, in pharetra metus facilisis. Sed
+          consectetur molestie nunc a sagittis. Sed sapien nisi, vestibulum in
+          volutpat vel, interdum vel turpis. Praesent volutpat venenatis augue sed
+          molestie. Proin vulputate congue leo quis dictum. Integer lacus diam,
+          bibendum vitae auctor ut, facilisis quis sem. Suspendisse accumsan augue
+          dapibus nisl dictum vehicula id et justo. Aenean scelerisque felis nec
+          fringilla lobortis. Vivamus diam arcu, faucibus a dignissim eu,
+          pellentesque sed tellus.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+          tristique erat vitae enim efficitur, in pharetra metus facilisis. Sed
+          consectetur molestie nunc a sagittis. Sed sapien nisi, vestibulum in
+          volutpat vel, interdum vel turpis. Praesent volutpat venenatis augue sed
+          molestie. Proin vulputate congue leo quis dictum. Integer lacus diam,
+          bibendum vitae auctor ut, facilisis quis sem. Suspendisse accumsan augue
+          dapibus nisl dictum vehicula id et justo. Aenean scelerisque felis nec
+          fringilla lobortis. Vivamus diam arcu, faucibus a dignissim eu,
+          pellentesque sed tellus.
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <input hidden formControlName="id">
+</form>

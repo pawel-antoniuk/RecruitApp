@@ -1,0 +1,13 @@
+@import "../../scss/common-style";
+
+section {
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  height: 0.2rem;
+  background: #fff;
+  margin-top: 0.2rem;
+}

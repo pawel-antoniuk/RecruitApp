@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+@import "../../../scss/global-theme";
+@import "../../../scss/global-variables";
+
+table {
+  @include mat.elevation(2);
+  width: 100%;
+}
+
+.mat-column-actions {
+  width: 5rem;
+}
+
+.container {
+  margin: auto;
+  padding: 1rem;
+  max-width: 60rem;
+
+  @media only screen and (max-width: 60rem) {
+    padding: 0;
+  }
+}
+
+.actions {
+  .new-button {
+    display: block;
+    margin: 1rem 0 auto auto;
+  }
+}

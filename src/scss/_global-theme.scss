@@ -1,0 +1,82 @@
+@use "@angular/material" as mat;
+
+// setup color palette
+$md-primary: (
+  50 : #eff1f3,
+  100 : #dedede,
+  200 : #b3b3b3,
+  300 : #949494,
+  400 : #7d7d7d,
+  500 : #666666,
+  600 : #5e5e5e,
+  700 : #535353,
+  800 : #494949,
+  900 : #383838,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+  )
+);
+
+$md-accent: (
+  50 : #f3e3e0,
+  100 : #e0b8b3,
+  200 : #cc8980,
+  300 : #b85a4d,
+  400 : #a83626,
+  500 : #991300,
+  600 : #911100,
+  700 : #860e00,
+  800 : #7c0b00,
+  900 : #6b0600,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+  )
+);
+
+$primary-palette: mat.define-palette($md-primary);
+$accent-palette: mat.define-palette($md-accent);
+$warn-palette: mat.define-palette(mat.$red-palette);
+
+@function primary-color($hue:500) {
+  @return mat.get-color-from-palette($primary-palette, $hue)
+}
+
+@function accent-color($hue:500) {
+  @return mat.get-color-from-palette($accent-palette, $hue)
+}
+
+@function primary-contrast-color($hue:500) {
+  @return mat.get-contrast-color-from-palette($primary-palette, $hue)
+}
+
+@function accent-contrast-color($hue:500) {
+  @return mat.get-contrast-color-from-palette($accent-palette, $hue)
+}
+
+@mixin primary-style($hue:500) {
+  background-color: primary-color($hue);
+  color: primary-contrast-color($hue);
+}
+
+@mixin accent-style($hue:500) {
+  background-color: accent-color($hue);
+  color: accent-contrast-color($hue);
+}

@@ -1,0 +1,22 @@
+<section>
+  <div class="title">
+    <h1>Summary</h1>
+  </div>
+
+  <div [innerHTML]="summary" class="summary-content"></div>
+
+  <section class="actions">
+    <div></div>
+    <button mat-raised-button color="accent" class="save-button" (click)="onClearClicked()">
+      Clear
+    </button>
+    <button mat-raised-button color="accent" class="save-button" (click)="onSubmitClicked()">
+      <ng-template [ngIf]="draft?.id">
+        Update
+      </ng-template>
+      <ng-template [ngIf]="!draft?.id">
+        Save
+      </ng-template>
+    </button>
+  </section>
+</section>
