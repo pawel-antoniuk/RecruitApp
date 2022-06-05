@@ -1,23 +1,24 @@
 <section class="navigation">
-  <a [routerLink]="step.available ? step.id : null"
-     *ngFor="let step of steps; let i = index">
-    <div class="step"
-         [class.active]="step.active"
-         [class.unavailable]="!step.available">
-      <div class="background-container">
-        <div class="background"></div>
-        <div class="animation-fill"></div>
-      </div>
-      <div matTooltip="{{ step.label | titlecase }}"
-           matTooltipPosition="right"
-           matTooltipClass="tooltip"
-           class="number">
-        {{ i + 1 }}
-      </div>
-      <div class="label">{{ step.label | uppercase }}</div>
-      <div class="info-button" *ngIf="step.tooltip">
-        <app-info-button tooltip="{{ step.tooltip }}" tooltipPosition="right"></app-info-button>
-      </div>
+  <a *ngFor="let step of steps; let i = index"
+     [routerLink]="step.available ? step.id : null"
+     [class.active]="step.active"
+     [class.unavailable]="!step.available"
+     class="step">
+    <div class="background-container">
+      <div class="background"></div>
+      <div class="animation-fill"></div>
+    </div>
+
+    <div matTooltip="{{ step.label | titlecase }}"
+         matTooltipPosition="right"
+         matTooltipClass="tooltip"
+         class="number">
+      {{ i + 1 }}
+    </div>
+
+    <div class="label">{{ step.label | uppercase }}</div>
+    <div class="info-button" *ngIf="step.tooltip">
+      <app-info-button tooltip="{{ step.tooltip }}" tooltipPosition="right"></app-info-button>
     </div>
   </a>
 </section>

@@ -17,5 +17,5 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
     this.steps = this.stepService.steps;
   }
-
 }
+

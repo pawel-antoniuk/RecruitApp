@@ -6,7 +6,7 @@ import {Subscription} from "rxjs";
 @Injectable({
   providedIn: 'any'
 })
-export class StepService implements OnInit {
+export class StepService {
   private _steps: Step[] = [
     new Step('step-definition', 'definition'),
     new Step('step-placeholder1', 'choose products'),
@@ -22,9 +22,6 @@ export class StepService implements OnInit {
   private routerEventSubscription?: Subscription;
 
   constructor(private router: Router) {
-  }
-
-  ngOnInit(): void {
     this.routerEventSubscription = this.router.events.subscribe((val: any) => {
       if (val instanceof ActivationEnd) {
         this.refresh();

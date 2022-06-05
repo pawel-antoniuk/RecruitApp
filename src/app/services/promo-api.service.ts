@@ -71,7 +71,7 @@ export class PromoAPIService {
   public postPromo(promo: PromoFormData)
     : Observable<PromoRequestResultModel<PromoFormData>> {
 
-    const postedPromo = mockPostPromo(promo)
+    const postedPromo = mockPostPromo(promo);
     return of(new PromoRequestResultModel('ok', '', postedPromo));
   }
 
