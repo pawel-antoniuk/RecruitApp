@@ -4,11 +4,8 @@
      [class.active]="step.active"
      [class.unavailable]="!step.available"
      class="step">
-    <div class="background-container">
-      <div class="background"></div>
-      <div class="animation-fill"></div>
-    </div>
 
+    <!-- Circle -->
     <div matTooltip="{{ step.label | titlecase }}"
          matTooltipPosition="right"
          matTooltipClass="tooltip"
@@ -16,9 +13,18 @@
       {{ i + 1 }}
     </div>
 
+    <!-- Label-->
     <div class="label">{{ step.label | uppercase }}</div>
+
+    <!-- Tooltip Button-->
     <div class="info-button" *ngIf="step.tooltip">
       <app-info-button tooltip="{{ step.tooltip }}" tooltipPosition="right"></app-info-button>
+    </div>
+
+    <!-- For click animation purpose -->
+    <div class="background-container">
+      <div class="background"></div>
+      <div class="animation-fill"></div>
     </div>
   </a>
 </section>

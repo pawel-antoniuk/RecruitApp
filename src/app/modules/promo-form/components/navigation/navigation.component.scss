@@ -84,6 +84,7 @@ $number-size: calc(#{$font-size} + 20px);
     height: 100%;
     padding-left: calc(#{$number-size} / 2);
     display: grid;
+    z-index: -1;
   }
 
   .animation-fill {
