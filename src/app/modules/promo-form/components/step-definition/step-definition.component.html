@@ -1,125 +1,131 @@
 <form [formGroup]="form">
   <div class="container" formGroupName="definition">
     <!-- Description column-->
-    <div class="content">
-      <section>
-        <div class="title">
-          <h1>Description</h1>
-          <div class="require-info"> ∗ is required</div>
-        </div>
+    <div class="content input-fields-container" formGroupName="description">
+      <div class="title">
+        <h1>Description</h1>
+        <div class="require-info"> ∗ is required</div>
+      </div>
 
-        <section formGroupName="description" class="input-fields-container">
-          <div class="input-line">
-            <app-info-button tooltip="Lorem ipsum"></app-info-button>
-            <mat-form-field appearance="fill" class="full-width">
-              <mat-label>Marketing name</mat-label>
-              <input formControlName="marketingName" matInput type="text"/>
-            </mat-form-field>
-          </div>
+      <!-- Marketing Name -->
+      <div class="input-line">
+        <app-info-button tooltip="Lorem ipsum"></app-info-button>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Marketing name</mat-label>
+          <input formControlName="marketingName" matInput type="text"/>
+        </mat-form-field>
+      </div>
 
-          <div class="input-line">
-            <app-info-button tooltip="Lorem ipsum"></app-info-button>
-            <mat-form-field appearance="fill" class="full-width">
-              <mat-label>Technical name</mat-label>
-              <input formControlName="technicalName" matInput type="text"/>
-            </mat-form-field>
-          </div>
+      <!-- Technical Name -->
+      <div class="input-line">
+        <app-info-button tooltip="Lorem ipsum"></app-info-button>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Technical name</mat-label>
+          <input formControlName="technicalName" matInput type="text"/>
+        </mat-form-field>
+      </div>
 
-          <div class="input-line">
-            <app-info-button tooltip="Lorem ipsum"></app-info-button>
-            <mat-form-field appearance="fill" class="full-width">
-              <mat-label>Description</mat-label>
-              <textarea formControlName="description" matInput rows="10"></textarea>
-            </mat-form-field>
-          </div>
-        </section>
-      </section>
+      <!-- Description -->
+      <div class="input-line">
+        <app-info-button tooltip="Lorem ipsum"></app-info-button>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea formControlName="description" matInput rows="10"></textarea>
+        </mat-form-field>
+      </div>
     </div>
 
     <!-- Conditions columns -->
-    <div class="content">
-      <section formGroupName="conditions" class="conditions">
-        <div class="title">
-          <h1>Conditions</h1>
-          <div class="require-info"> ∗ is required</div>
-        </div>
-        <section class="input-fields-container">
-          <div class="input-line">
-            <app-info-button tooltip="Lorem ipsum"></app-info-button>
-            <mat-form-field class="full-width" appearance="fill">
-              <mat-label>Portal</mat-label>
-              <mat-select formControlName="portal">
-                <mat-option *ngFor="let keyValue of availablePortalValues" [value]="keyValue[0]">
-                  {{ keyValue[1] }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="input-line">
-            <app-info-button tooltip="Lorem ipsum"></app-info-button>
-            <mat-form-field class="full-width" appearance="fill">
-              <mat-label>Type</mat-label>
-              <mat-select formControlName="type">
-                <mat-option *ngFor="let keyValue of availableTypeValues" [value]="keyValue[1]">
-                  {{ keyValue[1] }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="input-line">
-            <app-info-button tooltip="Lorem ipsum"></app-info-button>
-            <mat-form-field class="full-width" appearance="fill">
-              <mat-label>Benefit amount</mat-label>
-              <input formControlName="benefitAmount" matInput type="text"/>
-            </mat-form-field>
-          </div>
-        </section>
+    <div class="content input-fields-container" formGroupName="conditions">
+      <div class="title">
+        <h1>Conditions</h1>
+        <div class="require-info"> ∗ is required</div>
+      </div>
 
-        <section class="date-container input-line">
-          <app-info-button tooltip="Lorem ipsum"></app-info-button>
-          <mat-form-field class="short" appearance="fill">
-            <mat-label>Start date</mat-label>
-            <input formControlName="startDate" matInput [matDatepicker]="startPicker"/>
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="startPicker"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #startPicker></mat-datepicker>
-          </mat-form-field>
+      <!-- Portal -->
+      <div class="input-line">
+        <app-info-button tooltip="Lorem ipsum"></app-info-button>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Portal</mat-label>
+          <mat-select formControlName="portal">
+            <mat-option value="portalA">Portal A</mat-option>
+            <mat-option value="portalB">Portal B</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
 
-          <mat-form-field class="short" appearance="fill">
-            <mat-label>End date</mat-label>
-            <input formControlName="endDate" matInput [matDatepicker]="endPicker"/>
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="endPicker"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #endPicker></mat-datepicker>
-          </mat-form-field>
-        </section>
+      <!-- Type -->
+      <div class="input-line">
+        <app-info-button tooltip="Lorem ipsum"></app-info-button>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="type">
+            <mat-option value="type1">Type 1</mat-option>
+            <mat-option value="type2">Type 2</mat-option>
+            <mat-option value="type3">Type 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
 
-        <section class="options input-line">
-          <div class="input-line">
-            <app-info-button tooltip="Lorem ipsum"></app-info-button>
-            <mat-radio-group formControlName="priceConditions">
-              <mat-radio-button value="businessConditions">Business conditions</mat-radio-button>
-              <mat-radio-button value="basePrice100%">Base price 100%</mat-radio-button>
-            </mat-radio-group>
-          </div>
-          <div class="input-line">
-            <app-info-button tooltip="Lorem ipsum"></app-info-button>
-            <mat-checkbox formControlName="connectWithOtherPromotions">
-              Connect with other promotions
-            </mat-checkbox>
-          </div>
-          <div class="input-line">
-            <app-info-button tooltip="Lorem ipsum"></app-info-button>
-            <mat-checkbox formControlName="backPromotion">
-              Back promotion
-            </mat-checkbox>
-          </div>
-        </section>
+      <!-- Benefit amount -->
+      <div class="input-line">
+        <app-info-button tooltip="Lorem ipsum"></app-info-button>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Benefit amount</mat-label>
+          <input formControlName="benefitAmount" matInput type="text"/>
+        </mat-form-field>
+      </div>
+
+      <!-- Start and End Date -->
+      <section class="input-line date-container">
+        <!-- Start Date -->
+        <app-info-button tooltip="Lorem ipsum"></app-info-button>
+        <mat-form-field class="short" appearance="fill">
+          <mat-label>Start date</mat-label>
+          <input formControlName="startDate" matInput [matDatepicker]="startPicker"/>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="startPicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- End Date -->
+        <mat-form-field class="short" appearance="fill">
+          <mat-label>End date</mat-label>
+          <input formControlName="endDate" matInput [matDatepicker]="endPicker"/>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="endPicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>
       </section>
+
+      <!-- Price Conditions -->
+      <div class="input-line options">
+        <app-info-button tooltip="Lorem ipsum"></app-info-button>
+        <mat-radio-group formControlName="priceConditions">
+          <mat-radio-button value="businessConditions">Business conditions</mat-radio-button>
+          <mat-radio-button value="basePrice100">Base price 100%</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <!-- Connect with Other Promotions -->
+      <div class="input-line">
+        <app-info-button tooltip="Lorem ipsum"></app-info-button>
+        <mat-checkbox formControlName="connectWithOtherPromotions">
+          Connect with other promotions
+        </mat-checkbox>
+      </div>
+
+      <!-- Back Promotion -->
+      <div class="input-line">
+        <app-info-button tooltip="Lorem ipsum"></app-info-button>
+        <mat-checkbox formControlName="backPromotion">
+          Back promotion
+        </mat-checkbox>
+      </div>
     </div>
 
     <!-- 'Catalog promotion tutorial' column-->

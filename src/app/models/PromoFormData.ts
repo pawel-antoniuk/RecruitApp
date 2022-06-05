@@ -1,4 +1,4 @@
-export type PromoFormData = {
+export interface PromoFormData {
   id: number,
   definition: {
     description: {
@@ -17,24 +17,5 @@ export type PromoFormData = {
       backPromotion: boolean
     }
   }
-};
-
-export  const PromoFormDataAvailableValues = {
-  definition: {
-    conditions: {
-      portal: {
-        portalA: 'Portal A',
-        portalB: 'Portal B'
-      },
-      type: {
-        type1: 'Type 1',
-        type2: 'Type 2',
-        type3: 'Type 3'
-      },
-      priceConditions: {
-        businessConditions: 'Business conditions',
-        basePrice100: 'Base price 100%'
-      }
-    }
-  }
 }
+

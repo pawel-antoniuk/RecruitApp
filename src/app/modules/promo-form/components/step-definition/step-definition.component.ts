@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {MessageDialogService} from "../../../dialog/message-dialog.service";
-import {PromoFormData, PromoFormDataAvailableValues} from "../../../../models/PromoFormData";
+import {PromoFormData} from "../../../../models/PromoFormData";
 import {DraftService} from "../../services/draft.service";
 
 @Component({
@@ -13,13 +13,6 @@ import {DraftService} from "../../services/draft.service";
 export class StepDefinitionComponent implements OnInit {
 
   private formValueChangesSubscription?: Subscription;
-
-  availablePortalValues = Object.entries(
-    PromoFormDataAvailableValues.definition.conditions.portal);
-  availableTypeValues = Object.entries(
-    PromoFormDataAvailableValues.definition.conditions.type);
-  availablePriceConditionsValues = Object.entries(
-    PromoFormDataAvailableValues.definition.conditions.priceConditions);
 
   form = this.fb.group({
     id: [''],
@@ -35,7 +28,7 @@ export class StepDefinitionComponent implements OnInit {
         benefitAmount: [''],
         startDate: ['', Validators.required],
         endDate: [''],
-        priceConditions: ['businessConditions'],
+        priceConditions: [1],
         connectWithOtherPromotions: [false],
         backPromotion: [false]
       })
