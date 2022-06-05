@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Step} from "../models/Step";
 import {ActivationEnd, Router} from "@angular/router";
+import {Subscription} from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'
 })
-export class StepService {
+export class StepService implements OnInit {
   private _steps: Step[] = [
     new Step('step-definition', 'definition'),
     new Step('step-placeholder1', 'choose products'),
@@ -18,12 +19,21 @@ export class StepService {
     new Step('step-summary', 'summary'),
   ];
 
+  private routerEventSubscription?: Subscription;
+
   constructor(private router: Router) {
-    router.events.subscribe((val:any) => {
-      if(val instanceof ActivationEnd) {
+  }
+
+  ngOnInit(): void {
+    this.routerEventSubscription = this.router.events.subscribe((val: any) => {
+      if (val instanceof ActivationEnd) {
         this.refresh();
       }
     })
+  }
+
+  ngOnDestroy(): void {
+    this.routerEventSubscription?.unsubscribe();
   }
 
   public get currentStepId(): string {
@@ -38,7 +48,7 @@ export class StepService {
   public refresh() {
     const currentDocumentName = this.currentStepId;
 
-    for(let step of this._steps) {
+    for (let step of this._steps) {
       step.active = step.id === currentDocumentName
     }
   }

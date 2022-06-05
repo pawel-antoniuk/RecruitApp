@@ -12,7 +12,7 @@ import {DraftService} from "../promo-form/services/draft.service";
 })
 export class PromoListComponent implements OnInit {
 
-  promoList: any[] = [];
+  promoList: PromoFormData[] = [];
   promoListColumns = ['id', 'marketingName', 'actions'];
 
   constructor(private promoAPI: PromoAPIService,

@@ -9,13 +9,13 @@ import {Step} from "../../models/Step";
 })
 export class NavigationComponent implements OnInit {
 
-  steps: Step[];
+  steps: Step[] = [];
 
   constructor(private stepService: StepService) {
-    this.steps = stepService.steps;
   }
 
   ngOnInit(): void {
+    this.steps = this.stepService.steps;
   }
 
 }

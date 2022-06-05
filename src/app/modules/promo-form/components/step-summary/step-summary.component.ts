@@ -18,13 +18,13 @@ export class StepSummaryComponent implements OnInit {
               private promoAPI: PromoAPIService,
               private router: Router,
               private messageDialog: MessageDialogService) {
-    this.draft = this.draftService.load('promo-form');
   }
 
   ngOnInit(): void {
+    this.draft = this.draftService.load('promo-form');
   }
 
-  get summary(): any {
+  get summary(): string {
     return JSON.stringify(this.draft, null, 4);
   }
 
