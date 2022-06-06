@@ -17,7 +17,10 @@ export class FormDraftService<T extends {}> {
   }
 
   public load(key: string): T | undefined {
-    console.log('load')
+    if(this.cachedState) {
+      return this.cachedState
+    }
+
     const storageItem = localStorage.getItem(FormDraftService.getLocalStorageKey(key));
     if(storageItem) {
       this.cachedState = JSON.parse(storageItem) as T;
@@ -28,7 +31,6 @@ export class FormDraftService<T extends {}> {
   }
 
   public save(key: string, draft: T) {
-    console.log('save')
     const strDraft = JSON.stringify(draft);
     localStorage.setItem(FormDraftService.getLocalStorageKey(key), strDraft);
   }

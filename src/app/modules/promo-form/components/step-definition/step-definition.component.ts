@@ -19,7 +19,7 @@ export class StepDefinitionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formProvider.loadCachedContent();
+    this.formProvider.loadSavedContent();
   }
 
   get form() {

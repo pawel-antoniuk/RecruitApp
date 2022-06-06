@@ -38,12 +38,11 @@ export class FormDataProviderService {
   constructor(private draftService: FormDraftService<PromoFormData>,
               private fb: FormBuilder,
               private stepService: FormStepService) {
+
     this.sharedFormInitialValues = this.sharedForm.value;
     this.updateAvailability();
-
-    this.formValueChangesSubscription = this.sharedForm.valueChanges.subscribe(formData => {
-      this.valuesUpdated(formData);
-    });
+    this.formValueChangesSubscription = this.sharedForm.valueChanges
+      .subscribe((formData: PromoFormData) => this.valuesUpdated(formData));
   }
 
   ngOnDestroy(): void {
@@ -55,10 +54,11 @@ export class FormDataProviderService {
     this.updateAvailability(promoFormData)
   }
 
-  public loadCachedContent() {
+  public loadSavedContent() {
     let draft = this.draftService.load(PROMO_FORM_KEY);
     if (draft) {
-      this.sharedForm.patchValue(draft);
+      this.sharedForm.patchValue(draft, {emitEvent: false});
+      this.updateAvailability(draft)
     }
   }
 
