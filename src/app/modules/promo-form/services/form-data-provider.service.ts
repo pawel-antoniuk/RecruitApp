@@ -90,12 +90,12 @@ export class FormDataProviderService {
         {
           id: 'step-placeholder3',
           available: false,
-          tooltip: 'Provide XYZ in step 2 to make this step available',
+          tooltip: 'Lorem ipsum dolor sit amet',
         },
         {
           id: 'step-placeholder4',
           available: false,
-          tooltip: 'Provide XYZ in step 3 to make this step available',
+          tooltip: 'Lorem ipsum dolor sit amet',
         }
       ]);
     } else {
