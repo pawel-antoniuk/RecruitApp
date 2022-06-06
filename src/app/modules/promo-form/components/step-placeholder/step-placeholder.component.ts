@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormProviderService} from "../../services/form-provider.service";
+import {FormDataProviderService} from "../../services/form-data-provider.service";
 
 @Component({
   selector: 'app-step-placeholder',
@@ -8,7 +8,7 @@ import {FormProviderService} from "../../services/form-provider.service";
 })
 export class StepPlaceholderComponent implements OnInit {
 
-  constructor(formProvider: FormProviderService) { }
+  constructor(formProvider: FormDataProviderService) { }
 
   ngOnInit(): void {
   }

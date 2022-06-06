@@ -4,7 +4,7 @@ import {Router} from "@angular/router";
 import {MessageDialogService} from "../../../dialog/message-dialog.service";
 import {PromoFormData} from "../../../../models/PromoFormData";
 import {FormDraftService} from "../../services/form-draft.service";
-import {FormProviderService} from "../../services/form-provider.service";
+import {FormDataProviderService} from "../../services/form-data-provider.service";
 
 
 @Component({
@@ -15,7 +15,7 @@ import {FormProviderService} from "../../services/form-provider.service";
 export class StepSummaryComponent implements OnInit {
   formContent: PromoFormData | undefined;
 
-  constructor(private formProvider: FormProviderService,
+  constructor(private formProvider: FormDataProviderService,
               private promoAPI: PromoAPIService,
               private router: Router,
               private messageDialog: MessageDialogService) {

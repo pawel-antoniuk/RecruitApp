@@ -10,7 +10,7 @@ const PROMO_FORM_KEY = 'promo-form';
 @Injectable({
   providedIn: 'any'
 })
-export class FormProviderService {
+export class FormDataProviderService {
 
   private formValueChangesSubscription?: Subscription;
   private readonly sharedFormInitialValues: PromoFormData;

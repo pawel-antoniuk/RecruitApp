@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormStepService} from "./services/form-step.service";
-import {FormProviderService} from "./services/form-provider.service";
+import {FormDataProviderService} from "./services/form-data-provider.service";
 import {PromoFormData} from "../../models/PromoFormData";
 import {PromoFormRouterState} from "../../models/PromoFormRouterState";
 import {Router} from "@angular/router";
@@ -14,7 +14,7 @@ export class PromoFormComponent implements OnInit {
 
   constructor(public stepService: FormStepService,
               private router: Router,
-              private formProvider: FormProviderService) {
+              private formProvider: FormDataProviderService) {
     const state = router.getCurrentNavigation()?.extras.state as PromoFormRouterState | undefined;
     if (state) {
       if (state.action == 'fill') {

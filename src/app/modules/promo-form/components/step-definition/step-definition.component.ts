@@ -4,7 +4,7 @@ import {Subscription} from "rxjs";
 import {MessageDialogService} from "../../../dialog/message-dialog.service";
 import {PromoFormData} from "../../../../models/PromoFormData";
 import {FormDraftService} from "../../services/form-draft.service";
-import {FormProviderService} from "../../services/form-provider.service";
+import {FormDataProviderService} from "../../services/form-data-provider.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -15,7 +15,7 @@ import {Router} from "@angular/router";
 export class StepDefinitionComponent implements OnInit {
 
 
-  constructor(private formProvider: FormProviderService) {
+  constructor(private formProvider: FormDataProviderService) {
   }
 
   ngOnInit(): void {

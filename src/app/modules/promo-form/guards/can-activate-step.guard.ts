@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import { Observable } from 'rxjs';
 import {FormStepService} from "../services/form-step.service";
-import {FormProviderService} from "../services/form-provider.service";
+import {FormDataProviderService} from "../services/form-data-provider.service";
 
 @Injectable({
   providedIn: 'any'
 })
 export class CanActivateStepGuard implements CanActivateChild {
   constructor(private stepService: FormStepService,
-              private formProvider: FormProviderService,
+              private formProvider: FormDataProviderService,
               private router: Router) {
   }
 
