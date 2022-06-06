@@ -39,10 +39,11 @@ export class FormDataProviderService {
               private fb: FormBuilder,
               private stepService: FormStepService) {
     this.sharedFormInitialValues = this.sharedForm.value;
+    this.updateAvailability();
+
     this.formValueChangesSubscription = this.sharedForm.valueChanges.subscribe(formData => {
       this.valuesUpdated(formData);
     });
-    this.valuesUpdated(this.form.getRawValue());
   }
 
   ngOnDestroy(): void {
@@ -81,9 +82,9 @@ export class FormDataProviderService {
     this.sharedForm.reset(this.sharedFormInitialValues);
   }
 
-  private updateAvailability(promoFormData: PromoFormData): void {
-    if (promoFormData.definition.description.marketingName
-      || promoFormData.definition.description.technicalName) {
+  private updateAvailability(promoFormData?: PromoFormData): void {
+    if (promoFormData?.definition.description.marketingName
+      || promoFormData?.definition.description.technicalName) {
 
       this.stepService.updateSteps([
         {
