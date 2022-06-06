@@ -42,12 +42,12 @@ export class FormDataProviderService {
     this.formValueChangesSubscription = this.sharedForm.valueChanges.subscribe(formData => {
       this.valuesUpdated(formData);
     });
+    this.valuesUpdated(this.form.getRawValue());
   }
 
   ngOnDestroy(): void {
     this.formValueChangesSubscription?.unsubscribe();
   }
-
 
   public valuesUpdated(promoFormData: PromoFormData): void {
     this.draftService.save(PROMO_FORM_KEY, promoFormData)

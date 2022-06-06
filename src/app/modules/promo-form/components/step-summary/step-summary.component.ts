@@ -3,7 +3,6 @@ import {PromoAPIService} from "../../../../services/promo-api.service";
 import {Router} from "@angular/router";
 import {MessageDialogService} from "../../../dialog/message-dialog.service";
 import {PromoFormData} from "../../../../models/PromoFormData";
-import {FormDraftService} from "../../services/form-draft.service";
 import {FormDataProviderService} from "../../services/form-data-provider.service";
 
 
@@ -29,8 +28,8 @@ export class StepSummaryComponent implements OnInit {
     return JSON.stringify(this.formContent, null, 4);
   }
 
-  public  onSubmitClicked() {
-    if(!this.formContent) {
+  public onSubmitClicked() {
+    if (!this.formContent) {
       this.messageDialog.showMessage('Error!', 'Nothing to save')
       return;
     }
