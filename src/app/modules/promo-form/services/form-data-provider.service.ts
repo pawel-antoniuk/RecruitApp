@@ -54,7 +54,7 @@ export class FormDataProviderService {
     this.updateAvailability(promoFormData)
   }
 
-  public loadSavedContent() {
+  public loadSavedContent(): void {
     let draft = this.draftService.load(PROMO_FORM_KEY);
     if (draft) {
       this.sharedForm.patchValue(draft, {emitEvent: false});

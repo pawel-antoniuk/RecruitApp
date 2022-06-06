@@ -21,22 +21,11 @@ export class PromoListComponent implements OnInit {
               private messageDialog: MessageDialogService) {
   }
 
-  private reloadData() {
-    this.promoAPI.getAllPromos().subscribe(result => {
-        if (result.status === 'ok') {
-          this.promoList = result.payload!;
-        } else {
-          this.messageDialog.showMessage('Error!', 'Invalid form format')
-        }
-      }
-    );
-  }
-
   ngOnInit(): void {
     this.reloadData()
   }
 
-  navigateToPromoForm(action: 'fill' | 'clear', data: PromoFormData | undefined = undefined) {
+  public navigateToPromoForm(action: 'fill' | 'clear', data?: PromoFormData): void {
     const state: PromoFormRouterState = {action, data};
     this.router.navigate(['promo-form'], {state}).then(() => {
     }, err => {
@@ -44,11 +33,11 @@ export class PromoListComponent implements OnInit {
     });
   }
 
-  editPromo(promo: PromoFormData) {
+  public editPromo(promo: PromoFormData): void {
     this.navigateToPromoForm('fill', promo);
   }
 
-  deletePromo(promo: PromoFormData) {
+  public deletePromo(promo: PromoFormData): void {
     this.promoAPI.deletePromo(promo.id).subscribe(result => {
       if (result.status === 'ok') {
         this.reloadData();
@@ -58,12 +47,22 @@ export class PromoListComponent implements OnInit {
     })
   }
 
-  newPromo(): void {
+  public newPromo(): void {
     this.navigateToPromoForm('clear');
   }
 
-  getPromoMarketingName(promo: PromoFormData): string {
+  public getPromoMarketingName(promo: PromoFormData): string {
     return promo.definition.description.marketingName;
   }
 
+  private reloadData(): void {
+    this.promoAPI.getAllPromos().subscribe(result => {
+        if (result.status === 'ok') {
+          this.promoList = result.payload!;
+        } else {
+          this.messageDialog.showMessage('Error!', 'Invalid form format')
+        }
+      }
+    );
+  }
 }

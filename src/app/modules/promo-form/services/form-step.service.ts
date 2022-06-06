@@ -40,7 +40,7 @@ export class FormStepService {
     this.routerEventSubscription?.unsubscribe();
   }
 
-  public getCurrentStepId(url: string | undefined = undefined): string {
+  public getCurrentStepId(url?: string): string {
     return url ?? this.router.url.split('/').pop() ?? '';
   }
 
@@ -49,11 +49,11 @@ export class FormStepService {
     return this.currentNavigationSteps.find(s => s.id === stepId);
   }
 
-  public getCurrentStepLabel(url: string | undefined = undefined): string | undefined {
+  public getCurrentStepLabel(url?: string ): string | undefined {
     return this.getCurrentStep(url)?.label ?? '';
   }
 
-  public isCurrentStepAvailable(url: string | undefined = undefined): boolean {
+  public isCurrentStepAvailable(url?: string): boolean {
     return this.getCurrentStep(url)?.available ?? false;
   }
 
