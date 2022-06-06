@@ -1,6 +1,6 @@
 @use "@angular/material" as mat;
 @import "scss/global-theme";
-@import "mat-custom";
+@import "scss/mat-custom";
 
 $custom-typography: mat.define-typography-config(
   $font-family: "'Arial', sans-serif",

@@ -34,7 +34,7 @@ mat-form-field.full-width {
   }
 
   .require-info {
-    color: accent-color(500);
+    color: warn-color(500);
     grid-area: 1 / 2 / 2 / 3;
     margin-top: 0.5rem;
     font-size: 0.8rem;
@@ -44,24 +44,20 @@ mat-form-field.full-width {
 .container {
   display: grid;
   grid-template-columns: [left-column] 1fr [right-column] 1fr;
-  position: relative;
+  margin-right: 1rem;
 
   @media only screen and (max-width: $screen-sm) {
     grid-template-columns: 1fr;
+    margin-right: initial;
   }
 
   .content {
     padding: 0.5rem 1.8rem 0.5rem 1.8rem;
-    border-right: solid 0.2rem #fff;
+    border-right: solid 0.2rem rgb(0,0,0,0);
 
     @media only screen and (max-width: $screen-sm) {
-      padding: 0.5rem 1rem 0.5rem 1rem;
+      padding: 0.5rem 1.3rem 0.5rem 1.3rem;
     }
-  }
-
-  .conditions {
-    grid-row: auto/ span 2;
-    grid-column: auto;
   }
 }
 

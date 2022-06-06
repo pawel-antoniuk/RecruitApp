@@ -51,24 +51,57 @@ $md-accent: (
   )
 );
 
+$md-warn: (
+  50 : #f6e4e7,
+  100 : #e8bac2,
+  200 : #d88d99,
+  300 : #c85f70,
+  400 : #bd3c52,
+  500 : #b11a33,
+  600 : #aa172e,
+  700 : #a11327,
+  800 : #980f20,
+  900 : #880814,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+  )
+);
+
 $primary-palette: mat.define-palette($md-primary);
 $accent-palette: mat.define-palette($md-accent);
-$warn-palette: mat.define-palette(mat.$red-palette);
+$warn-palette: mat.define-palette($md-warn);
 
 @function primary-color($hue:500) {
   @return mat.get-color-from-palette($primary-palette, $hue)
-}
-
-@function accent-color($hue:500) {
-  @return mat.get-color-from-palette($accent-palette, $hue)
 }
 
 @function primary-contrast-color($hue:500) {
   @return mat.get-contrast-color-from-palette($primary-palette, $hue)
 }
 
+@function accent-color($hue:500) {
+  @return mat.get-color-from-palette($accent-palette, $hue)
+}
+
 @function accent-contrast-color($hue:500) {
   @return mat.get-contrast-color-from-palette($accent-palette, $hue)
+}
+
+@function warn-color($hue:500) {
+  @return mat.get-color-from-palette($warn-palette, $hue)
+}
+
+@function warn-contrast-color($hue:500) {
+  @return mat.get-contrast-color-from-palette($warn-palette, $hue)
 }
 
 @mixin primary-style($hue:500) {

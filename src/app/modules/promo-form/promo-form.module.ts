@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {StepDefinitionComponent} from './components/step-definition/step-definition.component';
 import {StepPlaceholderComponent} from './components/step-placeholder/step-placeholder.component';
 import {StepSummaryComponent} from './components/step-summary/step-summary.component';
-import {PromoFormComponent} from './components/promo-form/promo-form.component';
+import {PromoFormComponent} from './promo-form.component';
 import {PromoFormRoutingModule} from "./promo-form-routing.module";
 import {NavigationComponent} from './components/navigation/navigation.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
@@ -17,6 +17,7 @@ import {InfoButtonComponent} from './components/info-button/info-button.componen
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [

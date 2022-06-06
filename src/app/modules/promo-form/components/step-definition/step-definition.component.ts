@@ -28,7 +28,7 @@ export class StepDefinitionComponent implements OnInit {
         benefitAmount: [''],
         startDate: ['', Validators.required],
         endDate: [''],
-        priceConditions: [1],
+        priceConditions: ['businessConditions'],
         connectWithOtherPromotions: [false],
         backPromotion: [false]
       })

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {StepDefinitionComponent} from "./components/step-definition/step-definition.component";
-import {PromoFormComponent} from "./components/promo-form/promo-form.component";
+import {PromoFormComponent} from "./promo-form.component";
 import {StepPlaceholderComponent} from "./components/step-placeholder/step-placeholder.component";
 import {StepSummaryComponent} from "./components/step-summary/step-summary.component";
 

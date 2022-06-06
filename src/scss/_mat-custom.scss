@@ -1,6 +1,7 @@
 @use "@angular/material" as mat;
+@import "global-theme";
 
-mat-form-field.mat-form-field  {
+mat-form-field.mat-form-field {
   .mat-form-field-flex {
     background-color: #fff;
   }
@@ -9,6 +10,7 @@ mat-form-field.mat-form-field  {
     &::before {
       all: initial;
     }
+
     .mat-form-field-ripple {
       all: initial;
     }
@@ -17,11 +19,21 @@ mat-form-field.mat-form-field  {
   &.full-width {
     width: 100%;
   }
+
   &.short .mat-form-field-infix {
     width: auto;
 
     input {
       width: 6rem;
     }
+  }
+}
+
+.mat-form-field-infix .mat-form-field-label-wrapper .mat-form-field-label {
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  .mat-placeholder-required {
+    color: warn-color(500);
   }
 }
