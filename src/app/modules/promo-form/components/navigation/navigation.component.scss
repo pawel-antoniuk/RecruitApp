@@ -51,7 +51,6 @@ $number-size: calc(#{$number-font-size} + 20px);
     cursor: pointer;
 
     &:hover {
-      color: primary-contrast-color(100);
       transition: color 0.2s;
 
       .number {
