@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup} from "@angular/forms";
 
 function formatCamelCaseToWords(name: string | undefined): string | undefined {
-  if (name) {
+  if (name !== undefined) {
     return name?.toString().replace(/([A-Z])/g, m => " " + m)
       .replace(/^./, m => m.toUpperCase());
   } else {
@@ -22,6 +22,7 @@ export class SummaryControlDescriptionComponent implements OnInit {
 
   formattedName?: string;
   formattedValue?: string;
+  isControlValueEmpty?: boolean;
 
   constructor() {
   }
@@ -29,6 +30,8 @@ export class SummaryControlDescriptionComponent implements OnInit {
   ngOnInit(): void {
     this.formattedName = formatCamelCaseToWords(this.name);
     this.formattedValue = formatCamelCaseToWords(this.control?.value);
+    const value = (this.control as FormControl)?.value;
+    this.isControlValueEmpty = value === undefined || value === '';
   }
 
   public get isGroup(): boolean {
@@ -51,6 +54,5 @@ export class SummaryControlDescriptionComponent implements OnInit {
     const children = Object.values((this.control as FormGroup).controls);
     return !!children.find(c => c instanceof FormControl);
   }
-
 }
 

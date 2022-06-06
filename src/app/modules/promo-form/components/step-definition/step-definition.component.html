@@ -4,13 +4,13 @@
     <div class="cell" formGroupName="description">
       <div class="title">
         <h1>Description</h1>
-        <div class="require-info"> ∗ is required</div>
+        <div class="require-info">✶ is required</div>
       </div>
 
       <!-- Marketing Name -->
       <div class="input-line">
         <app-info-button tooltip="Lorem ipsum"></app-info-button>
-        <mat-form-field appearance="fill" class="full-width">
+        <mat-form-field appearance="fill" class="full-width required">
           <mat-label>Marketing name</mat-label>
           <input formControlName="marketingName" matInput type="text"/>
         </mat-form-field>
@@ -39,13 +39,13 @@
     <div class="cell" formGroupName="conditions">
       <div class="title">
         <h1>Conditions</h1>
-        <div class="require-info"> ∗ is required</div>
+        <div class="require-info">✶ is required</div>
       </div>
 
       <!-- Portal -->
       <div class="input-line">
         <app-info-button tooltip="Lorem ipsum"></app-info-button>
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field class="full-width required" appearance="fill">
           <mat-label>Portal</mat-label>
           <mat-select formControlName="portal">
             <mat-option value="portalA">Portal A</mat-option>
@@ -57,7 +57,7 @@
       <!-- Type -->
       <div class="input-line">
         <app-info-button tooltip="Lorem ipsum"></app-info-button>
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field class="full-width required" appearance="fill">
           <mat-label>Type</mat-label>
           <mat-select formControlName="type">
             <mat-option value="type1">Type 1</mat-option>
@@ -80,7 +80,7 @@
       <section class="input-line date-container">
         <!-- Start Date -->
         <app-info-button tooltip="Lorem ipsum"></app-info-button>
-        <mat-form-field class="short" appearance="fill">
+        <mat-form-field class="short required" appearance="fill">
           <mat-label>Start date</mat-label>
           <input formControlName="startDate" matInput [matDatepicker]="startPicker"/>
           <mat-datepicker-toggle matSuffix [for]="startPicker"

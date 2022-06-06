@@ -4,10 +4,10 @@
       <div class="control-name" [class.empty]="!formattedValue">
         {{ formattedName }}
       </div>
-      <div class="control-value" *ngIf="formattedValue">
+      <div class="control-value" *ngIf="!isControlValueEmpty">
         {{ formattedValue }}
       </div>
-      <div class="control-value empty" *ngIf="!formattedValue">
+      <div class="control-value empty" *ngIf="isControlValueEmpty">
         (empty)
       </div>
       <div *ngIf="isValid" class="valid-info valid">

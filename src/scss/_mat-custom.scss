@@ -29,11 +29,10 @@ mat-form-field.mat-form-field {
   }
 }
 
-.mat-form-field-infix .mat-form-field-label-wrapper .mat-form-field-label {
-  display: grid;
-  grid-template-columns: 1fr auto;
+.mat-form-field-infix .mat-form-field-label-wrapper
+.mat-form-field-label {
+  .mat-form-field-required-marker {
+    display: none;
 
-  .mat-placeholder-required {
-    color: warn-color(500);
   }
 }
