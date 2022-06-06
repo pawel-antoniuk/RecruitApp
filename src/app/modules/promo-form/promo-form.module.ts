@@ -17,6 +17,10 @@ import {InfoButtonComponent} from './components/info-button/info-button.componen
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
+import {
+  SummaryControlDescriptionComponent
+} from './components/step-summary/summary-control-description/summary-control-description.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -26,7 +30,8 @@ import {MatSelectModule} from '@angular/material/select';
     StepSummaryComponent,
     PromoFormComponent,
     NavigationComponent,
-    InfoButtonComponent
+    InfoButtonComponent,
+    SummaryControlDescriptionComponent
   ],
   imports: [
     CommonModule,

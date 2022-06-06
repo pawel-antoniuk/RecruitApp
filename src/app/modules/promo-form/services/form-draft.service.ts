@@ -31,6 +31,7 @@ export class FormDraftService<T extends {}> {
   }
 
   public save(key: string, draft: T) {
+    this.cachedState = draft;
     const strDraft = JSON.stringify(draft);
     localStorage.setItem(FormDraftService.getLocalStorageKey(key), strDraft);
   }

@@ -11,8 +11,9 @@ app-info-button {
 }
 
 .date-container {
-  display: flex;
+  display: grid;
   justify-content: space-between;
+  grid-template-columns: minmax(auto, 13rem) minmax(auto, 13rem);
 
   mat-form-field {
     width: auto;

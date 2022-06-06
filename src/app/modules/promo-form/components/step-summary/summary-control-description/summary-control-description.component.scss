@@ -1,0 +1,75 @@
+@import "../../../scss/common-style";
+
+.content {
+  font-size: 1rem;
+
+
+  .group {
+    background: rgba(0, 0, 0, 0.04);
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    z-index: 1;
+
+    @media only screen and (max-width: $screen-md) {
+      padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    }
+
+    @media only screen and (max-width: $screen-sm) {
+      padding: 0.1rem 0.2rem 0.1rem 0.2rem;
+    }
+  }
+
+  .group-name {
+    background: accent-color(500);
+    color: accent-contrast-color(500);
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0.6rem 0 0.5rem 0.7rem;
+    font-size: 1.2rem;
+  }
+
+  .group-header {
+    background: accent-color(500);
+    color: accent-contrast-color(500);
+    display: grid;
+    grid-template-columns: 1fr 1fr 10rem;
+    justify-content: space-between;
+    padding: 0.4rem 1.2rem 0.4rem 1.2rem;
+  }
+
+  .control {
+    display: grid;
+    grid-template-columns: 1fr 1fr 10rem;
+    justify-content: space-between;
+    margin: 0.5rem;
+
+    .control-name {
+      &:not(.empty) {
+        color: accent-color(500);
+      }
+    }
+
+    .control-value {
+      display: flex;
+
+      &:not(.empty) {
+        color: accent-color(500);
+      }
+    }
+
+    .valid-info {
+      color: accent-contrast-color(500);
+      text-align: center;
+      vertical-align: center;
+      margin-right: 0.2rem;
+
+      &.valid {
+        color: #087f23;
+      }
+
+      &.invalid {
+        color: warn-color(500);
+      }
+    }
+  }
+}

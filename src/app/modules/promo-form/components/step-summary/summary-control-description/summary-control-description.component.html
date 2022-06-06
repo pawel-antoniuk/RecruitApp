@@ -1,0 +1,40 @@
+<div class="content">
+  <ng-container *ngIf="isControl">
+    <div class="control">
+      <div class="control-name" [class.empty]="!formattedValue">
+        {{ formattedName }}
+      </div>
+      <div class="control-value" *ngIf="formattedValue">
+        {{ formattedValue }}
+      </div>
+      <div class="control-value empty" *ngIf="!formattedValue">
+        (empty)
+      </div>
+      <div *ngIf="isValid" class="valid-info valid">
+        <mat-icon>done</mat-icon>
+      </div>
+      <div *ngIf="!isValid" class="valid-info invalid">
+        <mat-icon>close</mat-icon>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="isGroup">
+    <div class="group-name">
+      {{ formattedName }}
+    </div>
+    <div class="group-header" *ngIf="hasControlChildren">
+      <div>Name</div>
+      <div>Value</div>
+      <div>Is the value correct?</div>
+    </div>
+    <div class="group mat-elevation-z2">
+      <ng-container *ngFor="let nameControl of childrenNameControlPairs">
+        <app-summary-control-description [name]="nameControl[0]" [control]="nameControl[1]">
+        </app-summary-control-description>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+
+
