@@ -16,8 +16,43 @@ h1::after {
   display: block;
 }
 
-.summary-content {
-  white-space: pre-wrap;
+::ng-deep .summary-content {
+  font-size: 1rem;
+
+  .group {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+
+  .group-header {
+    background: accent-color(500);
+    color: accent-contrast-color(500);
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0.4rem 0 0.4rem 0.5rem;
+  }
+
+  .control {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem;
+
+    .control-value {
+      display: flex;
+
+      &:not(.empty) {
+        color: accent-color(500);
+      }
+
+      .valid-info {
+        color: accent-contrast-color(500);
+        text-align: center;
+        vertical-align: center;
+        margin-right: 0.2rem;
+      }
+    }
+  }
 }
 
 .actions {
@@ -25,3 +60,4 @@ h1::after {
   grid-template-columns: 1fr auto auto;
   gap: 1rem;
 }
+

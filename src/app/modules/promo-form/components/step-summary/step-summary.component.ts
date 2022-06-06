@@ -4,15 +4,39 @@ import {Router} from "@angular/router";
 import {MessageDialogService} from "../../../dialog/message-dialog.service";
 import {PromoFormData} from "../../../../models/PromoFormData";
 import {FormDataProviderService} from "../../services/form-data-provider.service";
-import {FormGroup} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup} from "@angular/forms";
 
 // For debugging purpose
-function generateFormSummaryTable(form: FormGroup): string {
-  for(let [name, control] of Object.entries(form)) {
-    return name;
+function formatCamelCaseToWords(name: string) {
+  return name.replace(/([A-Z])/g, m => " " + m)
+    .replace(/^./, m => m.toUpperCase());
+}
+
+function generateFormSummaryTable(name: string, control: AbstractControl): any {
+  let output = [];
+  if (control instanceof FormControl) {
+    output.push('<div class="control">')
+    output.push(`<div class="control-header">${formatCamelCaseToWords(name)}</div>`);
+
+    const validInfo = control.valid ? '' : '<div class="valid-info">❗</div>';
+
+    if(control.value) {
+      output.push(`<div class="control-value">${validInfo}${formatCamelCaseToWords(control.value)}</div>`);
+    } else {
+      output.push(`<div class="control-value empty">${validInfo}(empty)</div>`);
+    }
+
+    output.push('</div>')
+  } else if (control instanceof FormGroup) {
+    output.push(`<div class="group-header">${formatCamelCaseToWords(name)}</div>`);
+    output.push('<div class="group">')
+    for (let [name, child] of Object.entries(control.controls)) {
+      output.push(generateFormSummaryTable(name, child));
+    }
+    output.push('</div>')
   }
 
-  return '';
+  return output.join('');
 }
 
 @Component({
@@ -34,7 +58,7 @@ export class StepSummaryComponent implements OnInit {
   }
 
   public get summary(): string {
-    return JSON.stringify(this.formContent, null, 4);
+    return generateFormSummaryTable('Form', this.formProvider.form);
   }
 
   public onSubmitClicked() {
@@ -70,7 +94,7 @@ export class StepSummaryComponent implements OnInit {
     });
   }
 
-  public get formValid() {
+  public get isFormValid() {
     return this.formProvider.form.valid;
   }
 }

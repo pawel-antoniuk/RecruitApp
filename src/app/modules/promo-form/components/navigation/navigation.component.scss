@@ -85,6 +85,10 @@ $number-size: calc(#{$number-font-size} + 20px);
     padding-left: calc(#{$number-size} / 2);
     display: grid;
     z-index: -1;
+
+    @media only screen and (max-width: $screen-xs) {
+      display: none;
+    }
   }
 
   .animation-fill {
@@ -103,6 +107,7 @@ $number-size: calc(#{$number-font-size} + 20px);
 
   .number {
     @include primary-style(500);
+
     display: inline-flex;
     border-radius: 50%;
     width: $number-size;
