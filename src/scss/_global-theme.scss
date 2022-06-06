@@ -76,9 +76,35 @@ $md-warn: (
   )
 );
 
+$md-mat-components-accent: (
+  50 : #e1eeff,
+  100 : #b4d6fe,
+  200 : #83bafe,
+  300 : #519efe,
+  400 : #2b8afd,
+  500 : #0675fd,
+  600 : #056dfd,
+  700 : #0462fc,
+  800 : #0358fc,
+  900 : #0245fc,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+  )
+);
+
 $primary-palette: mat.define-palette($md-primary);
 $accent-palette: mat.define-palette($md-accent);
 $warn-palette: mat.define-palette($md-warn);
+$mat-components-accent-palette: mat.define-palette($md-mat-components-accent);
 
 @function primary-color($hue:500) {
   @return mat.get-color-from-palette($primary-palette, $hue)

@@ -3,7 +3,8 @@ import {PromoAPIService} from "../../../../services/promo-api.service";
 import {Router} from "@angular/router";
 import {MessageDialogService} from "../../../dialog/message-dialog.service";
 import {PromoFormData} from "../../../../models/PromoFormData";
-import {DraftService} from "../../services/draft.service";
+import {FormDraftService} from "../../services/form-draft.service";
+import {FormProviderService} from "../../services/form-provider.service";
 
 
 @Component({
@@ -12,40 +13,40 @@ import {DraftService} from "../../services/draft.service";
   styleUrls: ['./step-summary.component.scss']
 })
 export class StepSummaryComponent implements OnInit {
-  draft: PromoFormData | undefined;
+  formContent: PromoFormData | undefined;
 
-  constructor(private draftService: DraftService<PromoFormData>,
+  constructor(private formProvider: FormProviderService,
               private promoAPI: PromoAPIService,
               private router: Router,
               private messageDialog: MessageDialogService) {
   }
 
   ngOnInit(): void {
-    this.draft = this.draftService.load('promo-form');
+    this.formContent = this.formProvider.formContent;
   }
 
-  get summary(): string {
-    return JSON.stringify(this.draft, null, 4);
+  public get summary(): string {
+    return JSON.stringify(this.formContent, null, 4);
   }
 
-  onSubmitClicked() {
-    if(!this.draft) {
+  public  onSubmitClicked() {
+    if(!this.formContent) {
       this.messageDialog.showMessage('Error!', 'Nothing to save')
       return;
     }
 
-    if (this.draft.id) {
-      this.promoAPI.putPromo(this.draft.id, this.draft).subscribe(() => {
+    if (this.formContent.id) {
+      this.promoAPI.putPromo(this.formContent.id, this.formContent).subscribe(() => {
         this.router.navigate(['promo-list']).then(nav => {
-          this.draftService.clearAll('promo-form');
+          this.formProvider.clearAll();
         }, err => {
           this.messageDialog.showMessage('Error!', err);
         });
       })
     } else {
-      this.promoAPI.postPromo(this.draft).subscribe(() => {
+      this.promoAPI.postPromo(this.formContent).subscribe(() => {
         this.router.navigate(['promo-list']).then(nav => {
-          this.draftService.clearAll('promo-form');
+          this.formProvider.clearAll();
         }, err => {
           this.messageDialog.showMessage('Error!', err);
         });
@@ -53,11 +54,15 @@ export class StepSummaryComponent implements OnInit {
     }
   }
 
-  onClearClicked() {
-    this.draftService.clearAll('promo-form');
+  public onClearClicked() {
+    this.formProvider.clearAll();
     this.router.navigate(['promo-form']).then(nav => {
     }, err => {
       this.messageDialog.showMessage('Error!', err);
     });
+  }
+
+  public get formValid() {
+    return this.formProvider.form.valid;
   }
 }

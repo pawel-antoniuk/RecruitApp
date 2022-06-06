@@ -1,13 +1,13 @@
 @import "../../scss/common-style";
 
-$font-size: 1.5rem;
-$number-size: calc(#{$font-size} + 20px);
+$number-font-size: 1.2rem;
+$number-size: calc(#{$number-font-size} + 20px);
 
 .navigation {
   position: sticky;
   top: 0;
   display: grid;
-  gap: 0.2rem;
+  gap: $line-width;
 }
 
 .step {
@@ -44,7 +44,7 @@ $number-size: calc(#{$font-size} + 20px);
   }
 
   &:not(.active) {
-    margin-right: 0.2rem;
+    margin-right: $line-width;
   }
 
   &:not(.active,.unavailable) {
@@ -107,7 +107,7 @@ $number-size: calc(#{$font-size} + 20px);
     border-radius: 50%;
     width: $number-size;
     height: $number-size;
-    font-size: $font-size;
+    font-size: $number-font-size;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
@@ -119,9 +119,9 @@ $number-size: calc(#{$font-size} + 20px);
     margin-left: 0.5rem;
     vertical-align: middle;
     font-size: 1rem;
-    padding-right: 1rem;
     grid-area: 1 / 2 / 2 / 3;
     justify-self: start;
+    padding: $line-width 1rem $line-width $line-width;
 
     @media only screen and (max-width: $screen-xs) {
       display: none;
@@ -130,7 +130,7 @@ $number-size: calc(#{$font-size} + 20px);
 
   .info-button {
     grid-area: 1 / 3 / 2 / 4;
-    margin-right: 0.2rem;
+    margin-right: $line-width;
 
     @media only screen and (max-width: $screen-xs) {
       position: absolute;

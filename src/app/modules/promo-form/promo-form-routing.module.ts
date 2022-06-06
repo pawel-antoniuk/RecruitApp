@@ -4,15 +4,17 @@ import {StepDefinitionComponent} from "./components/step-definition/step-definit
 import {PromoFormComponent} from "./promo-form.component";
 import {StepPlaceholderComponent} from "./components/step-placeholder/step-placeholder.component";
 import {StepSummaryComponent} from "./components/step-summary/step-summary.component";
+import {CanActivateStepGuard} from "./guards/can-activate-step.guard";
 
 const routes: Routes = [
   {
     path: '',
     component: PromoFormComponent,
+    canActivateChild: [CanActivateStepGuard],
     children: [
       {
         path: 'step-definition',
-        component: StepDefinitionComponent
+        component: StepDefinitionComponent,
       },
       {
         path: 'step-summary',

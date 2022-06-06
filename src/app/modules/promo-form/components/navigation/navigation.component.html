@@ -3,7 +3,8 @@
      [routerLink]="step.available ? step.id : null"
      [class.active]="step.active"
      [class.unavailable]="!step.available"
-     class="step">
+     class="step"
+  (click)="navigationButtonPressed(step)">
 
     <!-- Circle -->
     <div matTooltip="{{ step.label | titlecase }}"

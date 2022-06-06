@@ -1,20 +1,24 @@
 <section>
   <div class="title">
-    <h1>Summary</h1>
+    <h1>Summary (placeholder)</h1>
   </div>
 
   <div [innerHTML]="summary" class="summary-content"></div>
 
+  is valid?: {{ formValid }}
+
   <section class="actions">
     <div></div>
-    <button mat-raised-button color="accent" class="save-button" (click)="onClearClicked()">
+    <button mat-raised-button color="accent" class="save-button"
+            (click)="onClearClicked()">
       Clear
     </button>
-    <button mat-raised-button color="accent" class="save-button" (click)="onSubmitClicked()">
-      <ng-template [ngIf]="draft?.id">
+    <button mat-raised-button color="accent" class="save-button"
+            (click)="onSubmitClicked()" [disabled]="!formValid">
+      <ng-template [ngIf]="formContent?.id">
         Update
       </ng-template>
-      <ng-template [ngIf]="!draft?.id">
+      <ng-template [ngIf]="!formContent?.id">
         Save
       </ng-template>
     </button>

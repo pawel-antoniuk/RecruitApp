@@ -10,11 +10,6 @@ app-info-button {
   position: relative;
 }
 
-.input-fields-container {
-  display: grid;
-  gap: 0.5rem;
-}
-
 .date-container {
   display: flex;
   justify-content: space-between;
@@ -34,10 +29,4 @@ app-info-button {
     gap: 0.5rem;
   }
 }
-
-.input-fields-container {
-  display: grid;
-  gap: 0.5rem;
-}
-
 

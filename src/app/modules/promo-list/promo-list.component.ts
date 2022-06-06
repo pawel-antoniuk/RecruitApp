@@ -3,7 +3,8 @@ import {PromoAPIService} from "../../services/promo-api.service";
 import {Router} from "@angular/router";
 import {MessageDialogService} from "../dialog/message-dialog.service";
 import {PromoFormData} from "../../models/PromoFormData";
-import {DraftService} from "../promo-form/services/draft.service";
+import {FormDraftService} from "../promo-form/services/form-draft.service";
+import {PromoFormRouterState} from "../../models/PromoFormRouterState";
 
 @Component({
   selector: 'app-promo-list',
@@ -13,10 +14,9 @@ import {DraftService} from "../promo-form/services/draft.service";
 export class PromoListComponent implements OnInit {
 
   promoList: PromoFormData[] = [];
-  promoListColumns = ['id', 'marketingName', 'actions'];
+  promoListColumns = ['id', 'marketingName', 'edit', 'delete'];
 
   constructor(private promoAPI: PromoAPIService,
-              private draftService: DraftService<PromoFormData>,
               private router: Router,
               private messageDialog: MessageDialogService) {
   }
@@ -36,12 +36,16 @@ export class PromoListComponent implements OnInit {
     this.reloadData()
   }
 
-  editPromo(promo: PromoFormData) {
-    this.draftService.setDraft('promo-form', promo);
-    this.router.navigate(['promo-form']).then(nav => {
+  navigateToPromoForm(action: 'fill' | 'clear', data: PromoFormData | undefined = undefined) {
+    const state: PromoFormRouterState = {action, data};
+    this.router.navigate(['promo-form'], {state}).then(() => {
     }, err => {
       this.messageDialog.showMessage('Error!', err);
     });
+  }
+
+  editPromo(promo: PromoFormData) {
+    this.navigateToPromoForm('fill', promo);
   }
 
   deletePromo(promo: PromoFormData) {
@@ -54,12 +58,8 @@ export class PromoListComponent implements OnInit {
     })
   }
 
-  onNewClicked(): void {
-    this.draftService.clearAll('promo-form')
-    this.router.navigate(['promo-form']).then(nav => {
-    }, err => {
-      this.messageDialog.showMessage('Error!', err);
-    });
+  newPromo(): void {
+    this.navigateToPromoForm('clear');
   }
 
   getPromoMarketingName(promo: PromoFormData): string {

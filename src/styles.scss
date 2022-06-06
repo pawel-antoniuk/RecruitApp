@@ -24,7 +24,7 @@ $recruit-app-theme: mat.define-light-theme(
     (
       color: (
         primary: $primary-palette,
-        accent: $accent-palette,
+        accent: $mat-components-accent-palette,
         warn: $warn-palette,
       ),
     )
