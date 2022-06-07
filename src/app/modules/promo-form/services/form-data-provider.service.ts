@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {FormDraftService} from "./form-draft.service";
 import {PromoFormData} from "../../../models/PromoFormData";
 import {Subscription} from "rxjs";
 import {FormStepService} from "./form-step.service";
+import {DateRangeValidator} from "../validators/date-range-validator";
 
 const PROMO_FORM_KEY = 'promo-form';
 
@@ -25,7 +26,7 @@ export class FormDataProviderService {
       conditions: this.fb.group({
         portal: ['', Validators.required],
         type: ['', Validators.required],
-        benefitAmount: [''],
+        benefitAmount: [],
         startDate: ['', Validators.required],
         endDate: [''],
         priceConditions: ['businessConditions'],
@@ -38,6 +39,14 @@ export class FormDataProviderService {
   constructor(private draftService: FormDraftService<PromoFormData>,
               private fb: FormBuilder,
               private stepService: FormStepService) {
+
+    const startDateControl = this.sharedForm.get('definition.conditions.startDate');
+    const endDateControl = this.sharedForm.get('definition.conditions.endDate');
+
+    startDateControl?.addValidators(DateRangeValidator(endDateControl!,
+      (a, b) => a < b));
+    endDateControl?.addValidators(DateRangeValidator(startDateControl!,
+      (a, b) => a > b));
 
     this.sharedFormInitialValues = this.sharedForm.value;
     this.updateAvailability();
@@ -73,7 +82,7 @@ export class FormDataProviderService {
   public set formContent(content: PromoFormData | undefined) {
     if (content !== undefined) {
       this.draftService.setDraft(PROMO_FORM_KEY, content);
-      this.sharedForm.patchValue(content);
+      this.sharedForm.patchValue(content, {emitEvent: false});
     }
   }
 
@@ -83,6 +92,7 @@ export class FormDataProviderService {
   }
 
   private updateAvailability(promoFormData?: PromoFormData): void {
+
     if (promoFormData?.definition.description.marketingName
       || promoFormData?.definition.description.technicalName) {
 
@@ -107,6 +117,15 @@ export class FormDataProviderService {
         },
       ], false, 'Provide \'Marketing name\' or \'Technical name\' ' +
         'in step 2 to make this step available');
+    }
+
+    const controlPath = 'definition.conditions.benefitAmount';
+    const benefitAmountControl = this.sharedForm.get(controlPath) as FormControl;
+
+    if (promoFormData?.definition.conditions.type === 'type1') {
+      benefitAmountControl.enable({emitEvent: false});
+    } else {
+      benefitAmountControl.disable({emitEvent: false});
     }
   }
 }

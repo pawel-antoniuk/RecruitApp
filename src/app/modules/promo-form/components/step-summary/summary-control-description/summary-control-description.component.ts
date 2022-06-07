@@ -31,7 +31,7 @@ export class SummaryControlDescriptionComponent implements OnInit {
     this.formattedName = formatCamelCaseToWords(this.name);
     this.formattedValue = formatCamelCaseToWords(this.control?.value);
     const value = (this.control as FormControl)?.value;
-    this.isControlValueEmpty = value === undefined || value === '';
+    this.isControlValueEmpty = value === undefined || value === null || value === '';
   }
 
   public get isGroup(): boolean {
@@ -47,7 +47,7 @@ export class SummaryControlDescriptionComponent implements OnInit {
   }
 
   public get isValid(): boolean | undefined {
-    return this.control?.valid;
+    return this.control?.valid || this.control?.disabled;
   }
 
   public get hasControlChildren(): boolean {
