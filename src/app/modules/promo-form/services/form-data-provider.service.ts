@@ -126,7 +126,7 @@ export class FormDataProviderService {
           tooltip: '',
         },
       ], false, 'Provide \'Marketing name\' or \'Technical name\' ' +
-        'in step 2 to make this step available');
+        'in step 1 to make this step available');
     }
 
     const controlPath = 'definition.conditions.benefitAmount';
