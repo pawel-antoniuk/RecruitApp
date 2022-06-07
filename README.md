@@ -2,6 +2,26 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
 
+## Project structure
+
+scss - .scss files shared by all components \
+app - Root directory for modules and components \
+app / models - Models shared by all modules \
+app / services - Services shared by all modules \
+app / services - Services shared by all modules \
+app / modules - Submodules \
+app / modules / dialog - Dialog submodule (e.q yes/no dialog and message box) \
+app / modules / error-page - Error pages (e.g. 404 not found) \
+app / modules / promo-form - The main objective of this project - a form \
+app / modules / promo-form / components - components used in the 'promo form' \
+app / modules / promo-form / models - components used in the 'promo form' \
+app / modules / promo-form / guards - guards used only in the 'promo form routing' module \
+app / modules / promo-form / scss - .scss files used only in the 'promo form' module \
+app / modules / promo-form / services - services used in only the 'promo form' module \
+app / modules / promo-form / validators - validators used only in the 'promo form' module \
+app / modules / promo-list - A module with component that presents a list of saved forms
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

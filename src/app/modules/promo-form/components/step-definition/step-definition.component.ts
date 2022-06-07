@@ -8,7 +8,6 @@ import {FormDataProviderService} from "../../services/form-data-provider.service
 })
 export class StepDefinitionComponent implements OnInit {
 
-
   constructor(private formProvider: FormDataProviderService) {
   }
 

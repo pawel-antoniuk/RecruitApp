@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {YesNoDialogComponent, OkCancelDialogData} from "./yes-no-dialog/yes-no-dialog.component";
-import {Observable, Subscription} from "rxjs";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
