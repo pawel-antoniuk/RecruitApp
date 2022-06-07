@@ -2,29 +2,43 @@
 @import "global-theme";
 
 mat-form-field.mat-form-field {
+  &.mat-form-field-disabled {
+    .mat-form-field-underline::before {
+      background-color: #fff;
+      height: 0.2rem;
+    }
+
+    .mat-form-field-flex {
+      background-color: #f3f3f3;
+    }
+  }
+
   .mat-form-field-flex {
     background-color: #fff;
   }
 
-  .mat-form-field-underline {
-    &::before {
-      all: initial;
+
+  &:not(.mat-form-field-disabled) {
+    .mat-form-field-underline {
+      &::before {
+        all: initial;
+      }
+
+      .mat-form-field-ripple {
+        all: initial;
+      }
     }
 
-    .mat-form-field-ripple {
-      all: initial;
+    &.full-width {
+      width: 100%;
     }
-  }
 
-  &.full-width {
-    width: 100%;
-  }
+    &.short .mat-form-field-infix {
+      width: auto;
 
-  &.short .mat-form-field-infix {
-    width: auto;
-
-    input {
-      width: 6rem;
+      input {
+        width: 6rem;
+      }
     }
   }
 }
