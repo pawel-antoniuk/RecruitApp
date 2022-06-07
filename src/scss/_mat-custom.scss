@@ -4,6 +4,7 @@
 mat-form-field.mat-form-field {
   .mat-form-field-flex {
     background-color: #fff;
+    border-radius: initial;
   }
 
   &:not(.mat-form-field-disabled) {
