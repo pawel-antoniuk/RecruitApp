@@ -18,6 +18,7 @@ $number-size: calc(#{$number-font-size} + 20px);
   grid-template-columns: auto 1fr auto;
   align-items: center;
   justify-content: stretch;
+  position: relative;
 
   &.unavailable {
     .number {
@@ -138,7 +139,9 @@ $number-size: calc(#{$number-font-size} + 20px);
 
     @media only screen and (max-width: $screen-xs) {
       position: absolute;
-      margin: 1.6rem auto auto -1rem;
+      margin: initial;
+      bottom: -0.4rem;
+      left: -1.2rem;
     }
   }
 }
