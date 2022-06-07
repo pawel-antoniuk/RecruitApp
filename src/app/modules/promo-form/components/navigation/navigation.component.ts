@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormStepService} from "../../services/form-step.service";
 import {Step} from "../../models/Step";
 import {MessageDialogService} from "../../../dialog/message-dialog.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-navigation',
@@ -21,7 +22,7 @@ export class NavigationComponent implements OnInit {
   }
 
   public navigationButtonPressed(step: Step) {
-    if(!step.available && step.tooltip) {
+    if (!step.available && step.tooltip) {
       this.messageDialog.showMessage('This step is unavailable', step.tooltip);
     }
   }

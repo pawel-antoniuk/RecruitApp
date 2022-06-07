@@ -2,6 +2,7 @@ import {Injectable, OnInit} from '@angular/core';
 import {Step} from "../models/Step";
 import {ActivationEnd, Router} from "@angular/router";
 import {Subscription} from "rxjs";
+import {Title} from "@angular/platform-browser";
 
 export interface FormStepUpdateDescriptor {
   id: string,
@@ -14,20 +15,22 @@ export interface FormStepUpdateDescriptor {
 })
 export class FormStepService {
   private readonly initialNavigationSteps: Step[] = [
-    new Step('step-definition', 'definition'),
-    new Step('step-placeholder1', 'choose products'),
-    new Step('step-placeholder2', 'exclude products'),
-    new Step('step-placeholder3', 'bonus products'),
-    new Step('step-placeholder4', 'products limits'),
-    new Step('step-placeholder5', 'choose clients'),
-    new Step('step-placeholder6', 'exclude clients'),
-    new Step('step-placeholder7', 'client limits'),
-    new Step('step-summary', 'summary'),
+    new Step('step-definition', 'Definition'),
+    new Step('step-placeholder1', 'Choose Products'),
+    new Step('step-placeholder2', 'Exclude Products'),
+    new Step('step-placeholder3', 'Bonus Products'),
+    new Step('step-placeholder4', 'Products Limits'),
+    new Step('step-placeholder5', 'Choose Clients'),
+    new Step('step-placeholder6', 'Exclude Clients'),
+    new Step('step-placeholder7', 'Client Limits'),
+    new Step('step-summary', 'Summary'),
   ];
-  private currentNavigationSteps: Step[];
+  private readonly currentNavigationSteps: Step[];
   private routerEventSubscription?: Subscription;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private title: Title) {
+
     this.currentNavigationSteps = this.initialNavigationSteps.map(s => Object.assign({}, s));
     this.routerEventSubscription = this.router.events.subscribe((val: any) => {
       if (val instanceof ActivationEnd) {
@@ -44,12 +47,12 @@ export class FormStepService {
     return url ?? this.router.url.split('/').pop() ?? '';
   }
 
-  public getCurrentStep(url: string | undefined): Step | undefined {
+  public getCurrentStep(url?: string): Step | undefined {
     const stepId = this.getCurrentStepId(url);
     return this.currentNavigationSteps.find(s => s.id === stepId);
   }
 
-  public getCurrentStepLabel(url?: string ): string | undefined {
+  public getCurrentStepLabel(url?: string): string | undefined {
     return this.getCurrentStep(url)?.label ?? '';
   }
 
@@ -62,6 +65,11 @@ export class FormStepService {
 
     for (let step of this.currentNavigationSteps) {
       step.active = step.id === currentDocumentName
+    }
+
+    const currentStepLabel = this.getCurrentStepLabel();
+    if(currentStepLabel) {
+      this.title.setTitle(`RecruitApp - ${currentStepLabel}`);
     }
   }
 
