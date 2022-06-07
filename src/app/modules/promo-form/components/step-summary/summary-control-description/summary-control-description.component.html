@@ -1,7 +1,7 @@
 <div class="content">
   <ng-container *ngIf="isControl">
     <div class="control">
-      <div class="control-name" [class.empty]="!formattedValue">
+      <div class="control-name" [class.empty]="isControlValueEmpty">
         {{ formattedName }}
       </div>
       <div class="control-value" *ngIf="!isControlValueEmpty">
