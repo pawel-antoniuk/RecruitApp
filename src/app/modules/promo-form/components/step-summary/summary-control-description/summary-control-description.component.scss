@@ -43,6 +43,12 @@
     padding: 0.4rem 1.2rem 0.4rem 1.2rem;
   }
 
+  .group-name,.group-header {
+    &.valid {
+      background: #087f23;
+    }
+  }
+
   .control {
     display: grid;
     grid-template-columns: 1fr 1fr 3rem;

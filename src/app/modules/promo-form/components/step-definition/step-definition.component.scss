@@ -14,6 +14,7 @@ app-info-button {
   display: grid;
   justify-content: space-between;
   grid-template-columns: minmax(auto, 13rem) minmax(auto, 13rem);
+  grid-gap: 0.4rem;
 
   mat-form-field {
     width: auto;

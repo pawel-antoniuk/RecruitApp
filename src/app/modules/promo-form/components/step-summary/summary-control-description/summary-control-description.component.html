@@ -20,7 +20,7 @@
   </ng-container>
 
   <ng-container *ngIf="isGroup">
-    <div class="group-name">
+    <div class="group-name" [class.valid]="isValid">
       <div *ngIf="isValid" class="valid-info valid">
         <mat-icon>done</mat-icon>
       </div>
@@ -29,7 +29,7 @@
       </div>
       {{ formattedName }}
     </div>
-    <div class="group-header" *ngIf="hasControlChildren">
+    <div *ngIf="hasControlChildren" class="group-header" [class.valid]="isValid">
       <div>Field</div>
       <div>Value</div>
       <div>Valid</div>
