@@ -132,7 +132,7 @@ export class FormDataProviderService {
     const controlPath = 'definition.conditions.benefitAmount';
     const benefitAmountControl = this.sharedForm.get(controlPath) as FormControl;
 
-    if (promoFormData?.definition.conditions.type === 'type1') {
+    if (promoFormData?.definition.conditions.type) {
       benefitAmountControl.enable({emitEvent: false});
     } else {
       benefitAmountControl.disable({emitEvent: false});
