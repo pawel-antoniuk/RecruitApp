@@ -3,7 +3,6 @@
 .content {
   font-size: 1rem;
 
-
   .group {
     background: rgba(0, 0, 0, 0.04);
     padding: 0.5rem 1rem 0.5rem 1rem;
@@ -39,14 +38,14 @@
     background: accent-color(500);
     color: accent-contrast-color(500);
     display: grid;
-    grid-template-columns: 1fr 1fr 10rem;
+    grid-template-columns: 1fr 1fr 3rem;
     justify-content: space-between;
     padding: 0.4rem 1.2rem 0.4rem 1.2rem;
   }
 
   .control {
     display: grid;
-    grid-template-columns: 1fr 1fr 10rem;
+    grid-template-columns: 1fr 1fr 3rem;
     justify-content: space-between;
     margin: 0.5rem;
 
