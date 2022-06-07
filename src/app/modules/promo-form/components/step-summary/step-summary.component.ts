@@ -5,6 +5,7 @@ import {MessageDialogService} from "../../../dialog/message-dialog.service";
 import {PromoFormData} from "../../../../models/PromoFormData";
 import {FormDataProviderService} from "../../services/form-data-provider.service";
 import {AbstractControl, FormControl, FormGroup} from "@angular/forms";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-step-summary',

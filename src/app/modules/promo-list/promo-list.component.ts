@@ -5,6 +5,7 @@ import {MessageDialogService} from "../dialog/message-dialog.service";
 import {PromoFormData} from "../../models/PromoFormData";
 import {PromoFormRouterState} from "../../models/PromoFormRouterState";
 import {YesNoDialogService} from "../dialog/yes-no-dialog.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-promo-list',
@@ -19,11 +20,13 @@ export class PromoListComponent implements OnInit {
   constructor(private promoAPI: PromoAPIService,
               private router: Router,
               private messageDialog: MessageDialogService,
-              private yesNoDialog: YesNoDialogService) {
+              private yesNoDialog: YesNoDialogService,
+              private title: Title) {
   }
 
   ngOnInit(): void {
     this.reloadData()
+    this.title.setTitle('List')
   }
 
   public navigateToPromoForm(action: 'fill' | 'clear', data?: PromoFormData): void {
