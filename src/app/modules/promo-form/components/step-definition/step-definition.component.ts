@@ -19,4 +19,8 @@ export class StepDefinitionComponent implements OnInit {
     return this.formProvider.form;
   }
 
+  get isDateRangeValid() {
+    return this.form.get('definition.conditions.date')?.hasError('invalidDateRange');
+  }
+
 }

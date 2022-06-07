@@ -77,12 +77,12 @@
       </div>
 
       <!-- Start and End Date -->
-      <section class="input-line date-container">
+      <section class="input-line date-container" formGroupName="date">
         <!-- Start Date -->
         <app-info-button tooltip="Lorem ipsum"></app-info-button>
         <mat-form-field class="short required" appearance="fill">
           <mat-label>Start date</mat-label>
-          <input formControlName="startDate" matInput [matDatepicker]="startPicker"/>
+          <input formControlName="start" matInput [matDatepicker]="startPicker"/>
           <mat-datepicker-toggle matSuffix [for]="startPicker"
           ></mat-datepicker-toggle>
           <mat-datepicker #startPicker></mat-datepicker>
@@ -91,10 +91,14 @@
         <!-- End Date -->
         <mat-form-field class="short" appearance="fill">
           <mat-label>End date</mat-label>
-          <input formControlName="endDate" matInput [matDatepicker]="endPicker"/>
+          <input formControlName="end" matInput [matDatepicker]="endPicker"/>
           <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
           <mat-datepicker #endPicker></mat-datepicker>
         </mat-form-field>
+
+        <mat-error *ngIf="isDateRangeValid" class="error-row">
+          Invalid date range: start date must be earlier than end date
+        </mat-error>
       </section>
 
       <!-- Price Conditions -->

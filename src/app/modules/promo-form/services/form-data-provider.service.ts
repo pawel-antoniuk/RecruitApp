@@ -1,12 +1,30 @@
 import {Injectable} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  Validators
+} from "@angular/forms";
 import {CacheService} from "./cache.service";
 import {PromoFormData} from "../../../models/PromoFormData";
 import {Subscription} from "rxjs";
 import {FormStepService} from "./form-step.service";
-import {DateRangeValidator} from "../validators/date-range-validator";
 
 const PROMO_FORM_KEY = 'promo-form';
+
+export function DateRangeCrossValidator(formGroup: FormGroup): ValidationErrors | null {
+  const startDateControl = formGroup.get('start');
+  const endDateControl = formGroup.get('end');
+
+  if (startDateControl?.value && endDateControl?.value) {
+    const startDate = new Date(startDateControl?.value).valueOf();
+    const endDate = new Date(endDateControl?.value).valueOf()
+    return startDate < endDate ? null : {invalidDateRange: {startDate, endDate}};
+  } else {
+    return null;
+  }
+}
 
 @Injectable({
   providedIn: 'any'
@@ -27,8 +45,10 @@ export class FormDataProviderService {
         portal: ['', Validators.required],
         type: ['', Validators.required],
         benefitAmount: [],
-        startDate: ['', Validators.required],
-        endDate: [''],
+        date: this.fb.group({
+          start: ['', Validators.required],
+          end: [''],
+        }, {validators: [DateRangeCrossValidator]}),
         priceConditions: ['businessConditions'],
         connectWithOtherPromotions: [false],
         backPromotion: [false]
@@ -39,15 +59,6 @@ export class FormDataProviderService {
   constructor(private cacheService: CacheService<PromoFormData>,
               private fb: FormBuilder,
               private stepService: FormStepService) {
-
-    const startDateControl = this.sharedForm.get('definition.conditions.startDate');
-    const endDateControl = this.sharedForm.get('definition.conditions.endDate');
-
-    startDateControl?.addValidators(DateRangeValidator(endDateControl!,
-      (a, b) => a < b));
-    endDateControl?.addValidators(DateRangeValidator(startDateControl!,
-      (a, b) => a > b));
-
     this.sharedFormInitialValues = this.sharedForm.value;
     this.updateAvailability();
     this.formValueChangesSubscription = this.sharedForm.valueChanges
@@ -92,7 +103,6 @@ export class FormDataProviderService {
   }
 
   private updateAvailability(promoFormData?: PromoFormData): void {
-
     if (promoFormData?.definition.description.marketingName
       || promoFormData?.definition.description.technicalName) {
 

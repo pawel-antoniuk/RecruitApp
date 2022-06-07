@@ -21,6 +21,12 @@
 
   <ng-container *ngIf="isGroup">
     <div class="group-name">
+      <div *ngIf="isValid" class="valid-info valid">
+        <mat-icon>done</mat-icon>
+      </div>
+      <div *ngIf="!isValid" class="valid-info invalid">
+        <mat-icon>close</mat-icon>
+      </div>
       {{ formattedName }}
     </div>
     <div class="group-header" *ngIf="hasControlChildren">

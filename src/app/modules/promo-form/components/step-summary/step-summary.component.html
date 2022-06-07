@@ -1,7 +1,16 @@
 <section>
   <div class="title">
-    <h1>Summary (placeholder)</h1>
+    <h1>Summary</h1>
   </div>
+
+  <p *ngIf="!isFormValid">
+    <mat-icon class="valid-message valid-error">close</mat-icon>
+    This form has not been filled out correctly, please check the following table to verify the error
+  </p>
+  <p *ngIf="isFormValid">
+    <mat-icon class="valid-message valid-ok">done</mat-icon>
+    The form was filled out correctly
+  </p>
 
   <app-summary-control-description name="Form" [control]="formDataRootControl">
   </app-summary-control-description>

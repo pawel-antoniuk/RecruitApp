@@ -10,11 +10,13 @@ export interface PromoFormData {
       portal: 'portalA' | 'portalB',
       type: 'type1' | 'type2' | 'type3',
       benefitAmount: number,
-      startDate: string,
-      endDate: string,
       priceConditions: 'businessConditions' | 'basePrice100',
       connectWithOtherPromotions: string,
-      backPromotion: boolean
+      backPromotion: boolean,
+      date: {
+        start: string,
+        end: string
+      }
     }
   }
 }

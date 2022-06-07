@@ -22,3 +22,15 @@ h1::after {
   gap: 1rem;
 }
 
+
+.valid-message {
+  vertical-align: middle;
+
+  &.valid-ok {
+    color: #087f23;
+  }
+
+  &.valid-error {
+    color: warn-color();
+  }
+}
