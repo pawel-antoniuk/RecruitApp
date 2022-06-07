@@ -2,21 +2,9 @@
 @import "global-theme";
 
 mat-form-field.mat-form-field {
-  &.mat-form-field-disabled {
-    .mat-form-field-underline::before {
-      background-color: #fff;
-      height: 0.2rem;
-    }
-
-    .mat-form-field-flex {
-      background-color: #f3f3f3;
-    }
-  }
-
   .mat-form-field-flex {
     background-color: #fff;
   }
-
 
   &:not(.mat-form-field-disabled) {
     .mat-form-field-underline {

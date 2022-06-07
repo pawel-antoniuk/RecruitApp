@@ -82,6 +82,20 @@ mat-form-field.full-width {
       right: 0.15rem;
       color: warn-color(500);
     }
+
+    .input-line {
+      position: relative;
+
+      &.vertical-line::after {
+        content: "";
+        height: 0.1rem;
+        background-color: #fff;
+        display: block;
+        position: absolute;
+        width: 100%;
+        bottom: 0.2rem;
+      }
+    }
   }
 }
 
