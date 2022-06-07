@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OkCancelDialogComponent } from './ok-cancel-dialog.component';
+import { YesNoDialogComponent } from './yes-no-dialog.component';
 
-describe('OkCancelDialogComponent', () => {
-  let component: OkCancelDialogComponent;
-  let fixture: ComponentFixture<OkCancelDialogComponent>;
+describe('YesNoDialogComponent', () => {
+  let component: YesNoDialogComponent;
+  let fixture: ComponentFixture<YesNoDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OkCancelDialogComponent ]
+      declarations: [ YesNoDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OkCancelDialogComponent);
+    fixture = TestBed.createComponent(YesNoDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

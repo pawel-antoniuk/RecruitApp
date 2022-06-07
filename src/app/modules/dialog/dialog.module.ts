@@ -5,12 +5,12 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
-import {OkCancelDialogComponent} from './ok-cancel-dialog/ok-cancel-dialog.component';
+import {YesNoDialogComponent} from './yes-no-dialog/yes-no-dialog.component';
 
 @NgModule({
   declarations: [
     MessageDialogComponent,
-    OkCancelDialogComponent],
+    YesNoDialogComponent],
   exports: [
     MessageDialogComponent
   ],

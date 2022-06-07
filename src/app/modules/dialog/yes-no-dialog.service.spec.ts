@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OkCancelDialogService } from './ok-cancel-dialog.service';
+import { YesNoDialogService } from './yes-no-dialog.service';
 
 describe('OkCancelDialogService', () => {
-  let service: OkCancelDialogService;
+  let service: YesNoDialogService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(OkCancelDialogService);
+    service = TestBed.inject(YesNoDialogService);
   });
 
   it('should be created', () => {

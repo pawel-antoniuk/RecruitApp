@@ -1,10 +1,9 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
-export class MessageDialogData {
-  constructor(public title: string,
-              public content: string) {
-  }
+export interface MessageDialogData {
+  title: string,
+  content: string
 }
 
 @Component({

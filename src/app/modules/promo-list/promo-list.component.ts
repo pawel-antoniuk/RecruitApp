@@ -5,6 +5,7 @@ import {MessageDialogService} from "../dialog/message-dialog.service";
 import {PromoFormData} from "../../models/PromoFormData";
 import {FormDraftService} from "../promo-form/services/form-draft.service";
 import {PromoFormRouterState} from "../../models/PromoFormRouterState";
+import {YesNoDialogService} from "../dialog/yes-no-dialog.service";
 
 @Component({
   selector: 'app-promo-list',
@@ -18,7 +19,8 @@ export class PromoListComponent implements OnInit {
 
   constructor(private promoAPI: PromoAPIService,
               private router: Router,
-              private messageDialog: MessageDialogService) {
+              private messageDialog: MessageDialogService,
+              private yesNoDialog: YesNoDialogService) {
   }
 
   ngOnInit(): void {
@@ -38,13 +40,18 @@ export class PromoListComponent implements OnInit {
   }
 
   public deletePromo(promo: PromoFormData): void {
-    this.promoAPI.deletePromo(promo.id).subscribe(result => {
-      if (result.status === 'ok') {
-        this.reloadData();
-      } else {
-        this.messageDialog.showMessage('Error!', result.message);
-      }
-    })
+    this.yesNoDialog.showMessage('Be careful!', 'Do you want delete this item?')
+      .subscribe(r => {
+        if (r) {
+          this.promoAPI.deletePromo(promo.id).subscribe(result => {
+            if (result.status === 'ok') {
+              this.reloadData();
+            } else {
+              this.messageDialog.showMessage('Error!', result.message);
+            }
+          })
+        }
+      })
   }
 
   public newPromo(): void {
