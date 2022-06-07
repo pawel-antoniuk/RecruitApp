@@ -29,7 +29,7 @@ export class SummaryControlDescriptionComponent implements OnInit {
 
   ngOnInit(): void {
     this.formattedName = formatCamelCaseToWords(this.name);
-    this.formattedValue = formatCamelCaseToWords(this.control?.value);
+    this.formattedValue = this.control?.value;
     const value = (this.control as FormControl)?.value;
     this.isControlValueEmpty = value === undefined || value === null || value === '';
   }

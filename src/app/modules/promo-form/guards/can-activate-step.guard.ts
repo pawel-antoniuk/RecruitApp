@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 import {FormStepService} from "../services/form-step.service";
 import {FormDataProviderService} from "../services/form-data-provider.service";
 
@@ -22,8 +22,9 @@ export class CanActivateStepGuard implements CanActivateChild {
     const urlSegment = urlSegments[urlSegments.length - 1];
     const isAvailable = this.stepService.isCurrentStepAvailable(urlSegment.path);
 
-    if(!isAvailable) {
-      this.router.navigate(['promo-form']).then(() => {});
+    if (!isAvailable) {
+      this.router.navigate(['promo-form']).then(() => {
+      });
     }
 
     return isAvailable;

@@ -6,7 +6,6 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
-import {DialogModule} from "../dialog/dialog.module";
 
 
 @NgModule({

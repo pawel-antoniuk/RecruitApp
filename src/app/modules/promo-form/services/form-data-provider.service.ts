@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {FormDraftService} from "./form-draft.service";
+import {CacheService} from "./cache.service";
 import {PromoFormData} from "../../../models/PromoFormData";
 import {Subscription} from "rxjs";
 import {FormStepService} from "./form-step.service";
@@ -36,7 +36,7 @@ export class FormDataProviderService {
     })
   })
 
-  constructor(private draftService: FormDraftService<PromoFormData>,
+  constructor(private cacheService: CacheService<PromoFormData>,
               private fb: FormBuilder,
               private stepService: FormStepService) {
 
@@ -59,12 +59,12 @@ export class FormDataProviderService {
   }
 
   public valuesUpdated(promoFormData: PromoFormData): void {
-    this.draftService.save(PROMO_FORM_KEY, promoFormData)
+    this.cacheService.save(PROMO_FORM_KEY, promoFormData)
     this.updateAvailability(promoFormData)
   }
 
   public loadSavedContent(): void {
-    let draft = this.draftService.load(PROMO_FORM_KEY);
+    let draft = this.cacheService.load(PROMO_FORM_KEY);
     if (draft) {
       this.sharedForm.patchValue(draft, {emitEvent: false});
       this.updateAvailability(draft)
@@ -81,13 +81,13 @@ export class FormDataProviderService {
 
   public set formContent(content: PromoFormData | undefined) {
     if (content !== undefined) {
-      this.draftService.setDraft(PROMO_FORM_KEY, content);
+      this.cacheService.setDraft(PROMO_FORM_KEY, content);
       this.sharedForm.patchValue(content, {emitEvent: false});
     }
   }
 
   public clearAll() {
-    this.draftService.clearAll(PROMO_FORM_KEY);
+    this.cacheService.clearAll(PROMO_FORM_KEY);
     this.sharedForm.reset(this.sharedFormInitialValues);
   }
 

@@ -1,6 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {MessageDialogData} from "../message-dialog/message-dialog.component";
 
 export interface OkCancelDialogData {
   title: string,
@@ -14,8 +13,7 @@ export interface OkCancelDialogData {
 })
 export class YesNoDialogComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<YesNoDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: OkCancelDialogData) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: OkCancelDialogData) {
   }
 
   ngOnInit(): void {

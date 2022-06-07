@@ -5,7 +5,7 @@ const localStorageKey = 'FormStateStorage';
 @Injectable({
   providedIn: 'root'
 })
-export class FormDraftService<T extends {}> {
+export class CacheService<T extends {}> {
 
   cachedState?: T;
 
@@ -21,7 +21,7 @@ export class FormDraftService<T extends {}> {
       return this.cachedState
     }
 
-    const storageItem = localStorage.getItem(FormDraftService.getLocalStorageKey(key));
+    const storageItem = localStorage.getItem(CacheService.getLocalStorageKey(key));
     if(storageItem) {
       this.cachedState = JSON.parse(storageItem) as T;
       return this.cachedState;
@@ -33,16 +33,16 @@ export class FormDraftService<T extends {}> {
   public save(key: string, draft: T) {
     this.cachedState = draft;
     const strDraft = JSON.stringify(draft);
-    localStorage.setItem(FormDraftService.getLocalStorageKey(key), strDraft);
+    localStorage.setItem(CacheService.getLocalStorageKey(key), strDraft);
   }
 
   public clearAll(key: string) {
-    localStorage.removeItem(FormDraftService.getLocalStorageKey(key));
+    localStorage.removeItem(CacheService.getLocalStorageKey(key));
   }
 
   public setDraft(key: string, newDraft: T) {
     this.cachedState = newDraft;
     const newDraftStr = JSON.stringify(newDraft);
-    localStorage.setItem(FormDraftService.getLocalStorageKey(key), newDraftStr);
+    localStorage.setItem(CacheService.getLocalStorageKey(key), newDraftStr);
   }
 }

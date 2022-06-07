@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FormDraftService } from './form-draft.service';
+import { CacheService } from './cache.service';
 
-describe('FormDraftService', () => {
-  let service: FormDraftService<any>;
+describe('CacheService', () => {
+  let service: CacheService<any>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FormDraftService);
+    service = TestBed.inject(CacheService);
   });
 
   it('should be created', () => {

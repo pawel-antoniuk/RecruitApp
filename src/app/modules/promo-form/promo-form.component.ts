@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormStepService} from "./services/form-step.service";
 import {FormDataProviderService} from "./services/form-data-provider.service";
-import {PromoFormData} from "../../models/PromoFormData";
 import {PromoFormRouterState} from "../../models/PromoFormRouterState";
 import {Router} from "@angular/router";
 

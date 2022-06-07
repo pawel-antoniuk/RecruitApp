@@ -3,7 +3,6 @@ import {PromoAPIService} from "../../services/promo-api.service";
 import {Router} from "@angular/router";
 import {MessageDialogService} from "../dialog/message-dialog.service";
 import {PromoFormData} from "../../models/PromoFormData";
-import {FormDraftService} from "../promo-form/services/form-draft.service";
 import {PromoFormRouterState} from "../../models/PromoFormRouterState";
 import {YesNoDialogService} from "../dialog/yes-no-dialog.service";
 

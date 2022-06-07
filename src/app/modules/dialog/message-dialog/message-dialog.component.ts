@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 export interface MessageDialogData {
@@ -12,7 +12,6 @@ export interface MessageDialogData {
   styleUrls: ['./message-dialog.component.scss']
 })
 export class MessageDialogComponent {
-  constructor(private dialogRef: MatDialogRef<MessageDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: MessageDialogData) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: MessageDialogData) {
   }
 }
